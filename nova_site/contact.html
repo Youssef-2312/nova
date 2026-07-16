@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Nova</title>
+<meta name="description" content="Get in touch with Nova to start a website or Shopify project. Book a free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero { padding: 160px 0 40px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: flex-start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .contact-info-item { display: flex; gap: 16px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .contact-info-item:last-child { border-bottom: 1px solid var(--border); }
+  .contact-info-item .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--navy-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-info-item h4 { margin-bottom: 2px; }
+  .contact-info-item p { margin: 0; }
+  .contact-info-item a.value { font-weight: var(--fw-medium); color: var(--black); }
+
+  .form-card { padding: 40px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: var(--fs-small); font-weight: var(--fw-medium); color: var(--text); margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 13px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-strong);
+    background: var(--off-white); font-family: var(--font-body); font-size: var(--fs-body); color: var(--text);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--navy-500); box-shadow: 0 0 0 4px var(--navy-100);
+  }
+  .field textarea { resize: vertical; min-height: 120px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+
+  .socials { display: flex; gap: 12px; margin-top: 28px; }
+  .social-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center; transition: all 0.25s var(--ease);
+  }
+  .social-btn:hover { border-color: var(--navy-500); background: var(--navy-100); }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><span class="dot"></span>Nova</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M0 1H18M0 7H18M0 13H18" stroke="#0A0A0B" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+</div>
+
+<header class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1 style="max-width:640px;">Let's talk about your website.</h1>
+    <p class="lead" style="max-width:520px; margin-top:16px;">Fill out the form and we'll get back to you within one business day with next steps.</p>
+  </div>
+</header>
+
+<section style="padding-top:20px;">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <div class="contact-info-item">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4L9 10L16 4M2 4H16V14H2V4Z" stroke="#14295A" stroke-width="1.3"/></svg></div>
+        <div><h4>Email</h4><p><a class="value" href="mailto:hello@nova.studio">hello@nova.studio</a></p></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2C3 2 5 1.5 6.5 4C7.5 6 5.5 6.5 6.5 8C7.5 10 8 10.5 10 11.5C11.5 12.5 12 10.5 14 11.5C16.5 13 16 15 16 15C16 15 14 16.5 11 15.5C7 14 4 11 2.5 7C1.5 4.5 3 2 3 2Z" stroke="#14295A" stroke-width="1.3"/></svg></div>
+        <div><h4>WhatsApp</h4><p><a class="value" href="#">Chat with us directly</a></p></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#14295A" stroke-width="1.3"/><path d="M9 5V9L12 11" stroke="#14295A" stroke-width="1.3"/></svg></div>
+        <div><h4>Response Time</h4><p>Within 1 business day, most often same-day.</p></div>
+      </div>
+      <div class="socials">
+        <a class="social-btn" href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="#0A0A0B" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="#0A0A0B" stroke-width="1.2"/></svg></a>
+        <a class="social-btn" href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#0A0A0B" stroke-width="1.2"/><circle cx="5" cy="5" r="0.8" fill="#0A0A0B"/><path d="M5 7.5V12M9 12V9.2C9 8.2 9.7 7.7 10.5 7.7C11.3 7.7 12 8.2 12 9.2V12" stroke="#0A0A0B" stroke-width="1.1"/></svg></a>
+        <a class="social-btn" href="#" aria-label="Dribbble"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#0A0A0B" stroke-width="1.2"/></svg></a>
+      </div>
+    </div>
+
+    <div class="card form-card reveal">
+      <form class="contact-form">
+        <div class="field-row">
+          <div class="field"><label for="name">Full name</label><input id="name" type="text" placeholder="Jane Cooper" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="jane@company.com" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="company">Company</label><input id="company" type="text" placeholder="Company name"></div>
+          <div class="field">
+            <label for="service">Project type</label>
+            <select id="service">
+              <option>Shopify Development</option>
+              <option>Custom Website</option>
+              <option>Landing Page</option>
+              <option>Website Redesign</option>
+              <option>UI/UX Design</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="budget">Estimated budget</label>
+          <select id="budget">
+            <option>Under $3,000</option>
+            <option>$3,000 – $7,000</option>
+            <option>$7,000 – $15,000</option>
+            <option>$15,000+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" placeholder="What are you looking to build?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">Nova</span>
+        <p>A small studio building premium, custom websites and Shopify stores for growing businesses.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@nova.studio">hello@nova.studio</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Dribbble</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nova Studio. All rights reserved.</span>
+      <span>Designed & built by Nova.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast">Message sent — we'll be in touch within one business day.</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova — Custom Websites for Growing Businesses</title>
+<meta name="description" content="Nova designs and builds premium, custom websites and Shopify stores for businesses that want to look as good as they perform.">
+<meta property="og:title" content="Nova — Custom Websites for Growing Businesses">
+<meta property="og:description" content="High-end, custom-built websites and Shopify stores. See the work, then book a consultation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Home-page-specific styles */
+  .hero {
+    position: relative;
+    padding: 180px 0 120px;
+    overflow: hidden;
+    background:
+      radial-gradient(60% 50% at 78% 15%, rgba(11,29,58,0.10), transparent 70%),
+      var(--off-white);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 { font-size: var(--fs-display); max-width: 620px; }
+  .hero h1 .accent { color: var(--navy-500); }
+  .hero-actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+  .hero-meta { display: flex; gap: 28px; margin-top: 56px; flex-wrap: wrap; }
+  .hero-meta .stat-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: var(--fw-semibold); color: var(--black); }
+  .hero-meta .stat-label { font-size: var(--fs-caption); color: var(--text-faint); text-transform: uppercase; letter-spacing: var(--ls-wide); }
+
+  .hero-stack { position: relative; height: 460px; perspective: 1200px; }
+  .mockup-card {
+    position: absolute;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.6s var(--ease);
+    box-shadow: 0 40px 80px -30px rgba(11,29,58,0.35);
+  }
+  .mockup-card .bar { height: 26px; background: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 6px; padding: 0 12px; }
+  .mockup-card .bar span { width: 7px; height: 7px; border-radius: 50%; background: rgba(11,29,58,0.25); }
+  .mockup-card .body { height: calc(100% - 26px); }
+  .mockup-a { width: 300px; height: 380px; top: 40px; left: 40px; z-index: 3; }
+  .mockup-a .body { background: linear-gradient(160deg, var(--navy-900), var(--navy-500)); }
+  .mockup-b { width: 260px; height: 320px; top: 0; right: 0; z-index: 2; opacity: 0.92; }
+  .mockup-b .body { background: linear-gradient(160deg, #1c1c1e, #3a3a3d); }
+  .mockup-c { width: 240px; height: 280px; bottom: -10px; right: 60px; z-index: 1; opacity: 0.85; }
+  .mockup-c .body { background: linear-gradient(160deg, var(--white), var(--navy-100)); }
+  .mockup-a { background: var(--white); }
+  .mockup-b, .mockup-c { background: var(--white); }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-stack { height: 340px; margin-top: 24px; }
+    .mockup-a { width: 220px; height: 280px; left: 10px; }
+    .mockup-b { width: 180px; height: 220px; }
+    .mockup-c { width: 160px; height: 190px; right: 20px; }
+  }
+
+  .strip { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .strip .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .strip-label { font-size: var(--fs-caption); color: var(--text-faint); letter-spacing: var(--ls-wide); text-transform: uppercase; }
+  .strip-names { display: flex; gap: 32px; flex-wrap: wrap; font-family: var(--font-head); font-weight: var(--fw-semibold); color: var(--text-faint); }
+
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: var(--gap-lg); flex-wrap: wrap; }
+  .section-head h2 { margin: 0; max-width: 560px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card .num { font-family: var(--font-head); font-size: var(--fs-caption); color: var(--navy-300); font-weight: var(--fw-semibold); letter-spacing: var(--ls-wide); }
+  .service-card h3 { margin-top: 14px; }
+  @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+  .portfolio-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pf-card { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); background: var(--white); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+  .pf-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(11,29,58,0.3); }
+  .pf-thumb { height: 190px; position: relative; }
+  .pf-body { padding: 22px 22px 26px; }
+  .pf-body .tag { margin-bottom: 12px; }
+  .pf-body h4 { margin-bottom: 6px; }
+  .pf-link { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-small); font-weight: var(--fw-semibold); color: var(--navy-700); margin-top: 12px; }
+  @media (max-width: 900px) { .portfolio-preview { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .portfolio-preview { grid-template-columns: 1fr; } }
+
+  .why-section { background: var(--black); color: rgba(255,255,255,0.85); border-radius: var(--radius-lg); margin: 0 32px; padding: var(--section-pad) 40px; }
+  .why-section .container { padding: 0; max-width: 1120px; }
+  .why-section h2 { color: var(--white); max-width: 640px; }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: var(--gap-lg); }
+  .why-item .icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(30,58,114,0.35); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .why-item h4 { color: var(--white); }
+  .why-item p { color: rgba(255,255,255,0.55); }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } .why-section { margin: 0 16px; padding: 64px 24px; } }
+  @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .t-card { padding: 32px; }
+  .t-card .stars { color: var(--navy-500); font-size: 0.95rem; margin-bottom: 16px; letter-spacing: 3px; }
+  .t-card p.quote { color: var(--text); font-size: 1.02rem; line-height: var(--lh-relaxed); }
+  .t-person { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .t-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(160deg, var(--navy-500), var(--navy-900)); flex-shrink: 0; }
+  .t-name { font-weight: var(--fw-semibold); font-size: var(--fs-small); color: var(--black); }
+  .t-role { font-size: var(--fs-caption); color: var(--text-faint); }
+  @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+  .faq-wrap { max-width: 760px; margin: 0 auto; }
+  .accordion-item { border-bottom: 1px solid var(--border); }
+  .accordion-trigger {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 24px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    font-family: var(--font-head); font-size: 1.05rem; font-weight: var(--fw-semibold); color: var(--black);
+  }
+  .accordion-trigger .plus { font-size: 1.3rem; color: var(--navy-500); transition: transform 0.3s var(--ease); flex-shrink: 0; }
+  .accordion-item.open .accordion-trigger .plus { transform: rotate(45deg); }
+  .accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+  .accordion-panel p { padding-bottom: 24px; margin: 0; max-width: 640px; }
+
+  .final-cta { text-align: center; }
+  .final-cta h2 { max-width: 700px; margin: 0 auto 16px; }
+  .final-cta p.lead { max-width: 560px; margin: 0 auto 36px; }
+  .final-cta .hero-actions { justify-content: center; }
+
+  .toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+    background: var(--black); color: var(--white); padding: 16px 22px; border-radius: var(--radius-sm);
+    font-size: var(--fs-small); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    transform: translateY(20px); opacity: 0; pointer-events: none; transition: all 0.4s var(--ease);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo"><span class="dot"></span>Nova</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+      <button class="nav-toggle" aria-label="Open menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M0 1H18M0 7H18M0 13H18" stroke="#0A0A0B" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <button class="mobile-close" aria-label="Close menu">&times;</button>
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+</div>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Web Design & Development Studio</span>
+      <h1>Beautiful, modern websites that help businesses <span class="accent">grow.</span></h1>
+      <p class="lead" style="margin-top:20px; max-width:520px;">Nova designs and builds custom websites and Shopify stores for businesses that want their site to feel as premium as the work they do.</p>
+      <div class="hero-actions">
+        <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
+        <a href="contact.html" class="btn btn-secondary">Book a Consultation</a>
+      </div>
+      <div class="hero-meta">
+        <div><div class="stat-num">30+</div><div class="stat-label">Sites shipped</div></div>
+        <div><div class="stat-num">98</div><div class="stat-label">Avg. Lighthouse score</div></div>
+        <div><div class="stat-num">4.9/5</div><div class="stat-label">Client rating</div></div>
+      </div>
+    </div>
+    <div class="hero-stack" aria-hidden="true">
+      <div class="mockup-card mockup-a" data-rot="-4">
+        <div class="bar"><span></span><span></span><span></span></div>
+        <div class="body"></div>
+      </div>
+      <div class="mockup-card mockup-b" data-rot="3">
+        <div class="bar"><span></span><span></span><span></span></div>
+        <div class="body"></div>
+      </div>
+      <div class="mockup-card mockup-c" data-rot="-2">
+        <div class="bar"><span></span><span></span><span></span></div>
+        <div class="body"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="container">
+    <span class="strip-label">Trusted by teams in</span>
+    <div class="strip-names">
+      <span>Retail</span><span>Hospitality</span><span>Wellness</span><span>SaaS</span><span>Fashion</span>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">What Nova Offers</span>
+        <h2>Everything a growing business needs from a website.</h2>
+      </div>
+      <a href="services.html" class="btn btn-secondary">All Services</a>
+    </div>
+    <div class="services-grid">
+      <div class="card service-card reveal">
+        <div class="num">01</div>
+        <h3>Shopify Development</h3>
+        <p>Custom, high-converting Shopify storefronts built for speed and clean checkout flow.</p>
+      </div>
+      <div class="card service-card reveal">
+        <div class="num">02</div>
+        <h3>Custom Websites</h3>
+        <p>Bespoke marketing sites built from scratch — no templates, no page builders.</p>
+      </div>
+      <div class="card service-card reveal">
+        <div class="num">03</div>
+        <h3>UI/UX Design</h3>
+        <p>Interfaces designed around how your customers actually make decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Selected Work</span>
+        <h2>A few of the sites we've shipped recently.</h2>
+      </div>
+      <a href="portfolio.html" class="btn btn-secondary">View All Projects</a>
+    </div>
+    <div class="portfolio-preview">
+      <div class="pf-card reveal">
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#0b1d3a,#1e3a72);"></div>
+        <div class="pf-body">
+          <span class="tag">Fashion Retail</span>
+          <h4>Aureline Studio</h4>
+          <p style="margin:0;">A Shopify flagship rebuild focused on a faster, cleaner checkout.</p>
+          <span class="pf-link">View Project →</span>
+        </div>
+      </div>
+      <div class="pf-card reveal">
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#1c1c1e,#3a3a3d);"></div>
+        <div class="pf-body">
+          <span class="tag">Hospitality</span>
+          <h4>Marrow & Co.</h4>
+          <p style="margin:0;">A restaurant group site with live reservations and a menu CMS.</p>
+          <span class="pf-link">View Project →</span>
+        </div>
+      </div>
+      <div class="pf-card reveal">
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"></div>
+        <div class="pf-body">
+          <span class="tag">Wellness</span>
+          <h4>Solace Clinics</h4>
+          <p style="margin:0;">A calm, conversion-focused site for a multi-location wellness brand.</p>
+          <span class="pf-link">View Project →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why-section reveal">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--navy-300);">Why Choose Nova</span>
+      <h2>Technical skill, shown through the work — not through the sales pitch.</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L11.5 6.2L17 7L13 10.8L14 16.5L9 13.7L4 16.5L5 10.8L1 7L6.5 6.2L9 1Z" stroke="white" stroke-width="1.3"/></svg></div>
+          <h4>Design-first process</h4>
+          <p>Every project starts as a real design, not a template pieced together.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M1 9H17M1 9L6 4M1 9L6 14" stroke="white" stroke-width="1.3"/></svg></div>
+          <h4>Built for speed</h4>
+          <p>Optimized images, minimal JS, and clean code — fast sites out of the box.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="2" stroke="white" stroke-width="1.3"/></svg></div>
+          <h4>Accessible by default</h4>
+          <p>Semantic markup, keyboard support, and real contrast — for every visitor.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 15L7 10L10 13L16 7" stroke="white" stroke-width="1.3"/></svg></div>
+          <h4>Built to grow</h4>
+          <p>Component-based builds that stay easy to extend as your business grows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Client Feedback</span>
+        <h2>What it's like to work with Nova.</h2>
+      </div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="card t-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Nova rebuilt our Shopify store in three weeks and our conversion rate went up almost immediately. The whole process felt effortless.</p>
+        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Priya Nandan</div><div class="t-role">Founder, Aureline Studio</div></div></div>
+      </div>
+      <div class="card t-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">They asked better questions about our business than any agency we'd worked with before. The site reflects that.</p>
+        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Daniel Osei</div><div class="t-role">COO, Marrow & Co.</div></div></div>
+      </div>
+      <div class="card t-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Clean communication, on-time delivery, and a site that finally looks like the quality of care we actually provide.</p>
+        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Elena Cross</div><div class="t-role">Director, Solace Clinics</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container faq-wrap">
+    <div class="section-head reveal" style="justify-content:center; text-align:center; flex-direction:column;">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions before getting started.</h2>
+    </div>
+    <div class="accordion reveal">
+      <div class="accordion-item open">
+        <button class="accordion-trigger" aria-expanded="true">How long does a typical project take?<span class="plus">+</span></button>
+        <div class="accordion-panel" style="max-height:100px;"><p>Most marketing sites take 2–4 weeks. Shopify rebuilds typically run 3–6 weeks depending on catalog size and custom features.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">Do you work with existing brand guidelines?<span class="plus">+</span></button>
+        <div class="accordion-panel"><p>Yes. If you have brand guidelines, we design within them. If not, we can help define a simple visual identity as part of the project.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">Will I be able to update the site myself?<span class="plus">+</span></button>
+        <div class="accordion-panel"><p>Yes — every site is delivered with a CMS or Shopify admin setup so you can update copy, images, and products without touching code.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false">What's included after launch?<span class="plus">+</span></button>
+        <div class="accordion-panel"><p>All projects include a 30-day support window for fixes, plus optional ongoing maintenance and performance monitoring.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container final-cta reveal">
+    <span class="eyebrow" style="justify-content:center;">Get Started</span>
+    <h2>Have a website project in mind?</h2>
+    <p class="lead">Book a free 20-minute consultation. We'll talk through your goals and whether Nova is the right fit.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+      <a href="portfolio.html" class="btn btn-secondary">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">Nova</span>
+        <p>A small studio building premium, custom websites and Shopify stores for growing businesses.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:hello@nova.studio">hello@nova.studio</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Dribbble</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nova Studio. All rights reserved.</span>
+      <span>Designed & built by Nova.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast">Message sent — we'll be in touch within one business day.</div>
+
+<script src="script.js"></script>
+</body>
+</html>
