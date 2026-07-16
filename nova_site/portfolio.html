@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio — Nova</title>
 <meta name="description" content="Browse websites and Shopify stores designed and built by Nova, across retail, hospitality, wellness, and SaaS.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://www.novastudio.com/portfolio.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -80,16 +82,21 @@
 
 <section style="padding-top:0;">
   <div class="container">
-    <div class="filters reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="retail">Fashion Retail</button>
-      <button class="filter-btn" data-filter="hospitality">Hospitality</button>
-      <button class="filter-btn" data-filter="wellness">Wellness</button>
-      <button class="filter-btn" data-filter="saas">SaaS</button>
+    <div class="search-bar reveal">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#8B8F97" stroke-width="1.4"/><path d="M11 11L14.5 14.5" stroke="#8B8F97" stroke-width="1.4"/></svg>
+      <input type="text" class="project-search" placeholder="Search projects or tech..." aria-label="Search projects">
+    </div>
+
+    <div class="filters reveal" role="group" aria-label="Filter projects by industry">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="retail" aria-pressed="false">Fashion Retail</button>
+      <button class="filter-btn" data-filter="hospitality" aria-pressed="false">Hospitality</button>
+      <button class="filter-btn" data-filter="wellness" aria-pressed="false">Wellness</button>
+      <button class="filter-btn" data-filter="saas" aria-pressed="false">SaaS</button>
     </div>
 
     <div class="projects-grid">
-      <div class="project-card reveal" data-industry="retail">
+      <div class="project-card reveal" data-industry="retail" data-title="Aureline Studio" data-industry-label="Fashion Retail" data-tech="Shopify, Liquid, Custom JS" data-color="linear-gradient(150deg,#0b1d3a,#1e3a72)" data-desc="A full Shopify flagship rebuild focused on a streamlined checkout, a redesigned product page template, and a 40% faster load time compared to the previous store.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#0b1d3a,#1e3a72);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -101,7 +108,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="hospitality">
+      <div class="project-card reveal" data-industry="hospitality" data-title="Marrow & Co." data-industry-label="Hospitality" data-tech="Webflow CMS, Custom Code" data-color="linear-gradient(150deg,#1c1c1e,#3a3a3d)" data-desc="A restaurant group site with live table reservations, a chef-editable menu CMS, and location pages built for local search.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#1c1c1e,#3a3a3d);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -113,7 +120,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="wellness">
+      <div class="project-card reveal" data-industry="wellness" data-title="Solace Clinics" data-industry-label="Wellness" data-tech="Next.js, Sanity CMS" data-color="linear-gradient(150deg,#eef1f7,#c7d1e3)" data-desc="A calm, conversion-focused site for a multi-location wellness brand, with online booking integration and location-specific landing pages.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -125,7 +132,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="saas">
+      <div class="project-card reveal" data-industry="saas" data-title="Loomstack" data-industry-label="SaaS" data-tech="Next.js, Tailwind, MDX" data-color="linear-gradient(150deg,#14295a,#3f5a8f)" data-desc="A marketing site and docs hub for a developer analytics platform, including an MDX-powered docs system and interactive pricing calculator.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#14295a,#3f5a8f);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -137,7 +144,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="retail">
+      <div class="project-card reveal" data-industry="retail" data-title="Field & Form" data-industry-label="Fashion Retail" data-tech="Shopify, Custom JS" data-color="linear-gradient(150deg,#3a3a3d,#0a0a0b)" data-desc="A minimalist Shopify storefront for a sustainable outerwear brand, with a custom size-guide tool and carbon-neutral shipping messaging.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#3a3a3d,#0a0a0b);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -149,7 +156,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="wellness">
+      <div class="project-card reveal" data-industry="wellness" data-title="Halcyon Studio" data-industry-label="Wellness" data-tech="Webflow, Memberstack" data-color="linear-gradient(150deg,#1e3a72,#0b1d3a)" data-desc="A boutique fitness studio site with class scheduling, instructor profiles, and gated membership content powered by Memberstack.">
         <div class="project-thumb" style="background:linear-gradient(150deg,#1e3a72,#0b1d3a);"></div>
         <div class="project-body">
           <div class="project-top">
@@ -161,8 +168,28 @@
         </div>
       </div>
     </div>
+
+    <div class="projects-empty">
+      <p style="margin:0;">No projects match your search. Try a different keyword or filter.</p>
+    </div>
   </div>
 </section>
+
+<div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close project details">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2L14 14M2 14L14 2" stroke="#0A0A0B" stroke-width="1.5"/></svg>
+    </button>
+    <div class="modal-thumb"></div>
+    <div class="modal-body">
+      <span class="modal-industry"></span>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-desc" style="margin-top:12px;"></p>
+      <div class="modal-tech"></div>
+      <a href="#" class="btn btn-primary">Visit Live Site</a>
+    </div>
+  </div>
+</div>
 
 <section id="cta" style="padding-top:40px;">
   <div class="container" style="text-align:center;">

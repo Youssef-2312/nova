@@ -57,20 +57,96 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- Portfolio filter (tabs) --- */
+  /* --- Portfolio filter (tabs) + search --- */
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.querySelector('.project-search');
+  const emptyState = document.querySelector('.projects-empty');
+
+  const applyFilters = () => {
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+    const query = (searchInput?.value || '').trim().toLowerCase();
+    let visibleCount = 0;
+
+    projectCards.forEach(card => {
+      const matchesFilter = filter === 'all' || card.dataset.industry === filter;
+      const matchesSearch = !query || card.dataset.title.toLowerCase().includes(query) ||
+        (card.dataset.tech || '').toLowerCase().includes(query);
+      const show = matchesFilter && matchesSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+
+    if (emptyState) emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+  };
+
   if (filterButtons.length && projectCards.length) {
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        projectCards.forEach(card => {
-          const match = filter === 'all' || card.dataset.industry === filter;
-          card.style.display = match ? '' : 'none';
+        filterButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
         });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        applyFilters();
       });
+    });
+  }
+  searchInput?.addEventListener('input', applyFilters);
+
+  /* --- Project detail modal --- */
+  const modalOverlay = document.querySelector('.modal-overlay');
+  if (modalOverlay) {
+    const modalThumb = modalOverlay.querySelector('.modal-thumb');
+    const modalIndustry = modalOverlay.querySelector('.modal-industry');
+    const modalTitle = modalOverlay.querySelector('.modal-title');
+    const modalDesc = modalOverlay.querySelector('.modal-desc');
+    const modalTech = modalOverlay.querySelector('.modal-tech');
+    const modalClose = modalOverlay.querySelector('.modal-close');
+    let lastFocused = null;
+
+    const openModal = (card) => {
+      lastFocused = document.activeElement;
+      if (modalThumb) modalThumb.style.background = card.dataset.color || 'var(--navy-500)';
+      if (modalIndustry) modalIndustry.textContent = card.dataset.industryLabel || '';
+      if (modalTitle) modalTitle.textContent = card.dataset.title || '';
+      if (modalDesc) modalDesc.textContent = card.dataset.desc || '';
+      if (modalTech) {
+        modalTech.innerHTML = '';
+        (card.dataset.tech || '').split(',').filter(Boolean).forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'tag';
+          span.textContent = t.trim();
+          modalTech.appendChild(span);
+        });
+      }
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalClose?.focus();
+    };
+
+    const closeModal = () => {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    };
+
+    document.querySelectorAll('.project-card .project-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = link.closest('.project-card');
+        if (card) openModal(card);
+      });
+    });
+
+    modalClose?.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
     });
   }
 
