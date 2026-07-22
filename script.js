@@ -40,6 +40,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* --- Data-driven project rendering ---
+     Reads NOVA_PROJECTS (projects.js, newest first) and renders:
+     [data-projects-grid]    → all projects (portfolio page)
+     [data-project-filters]  → filter buttons built from the data
+     [data-projects-preview] → newest 3 (homepage Selected Work)
+     [data-projects-collage] → newest 3 (about page collage)
+     Runs before the reveal/filter/modal bindings below so the
+     generated elements get picked up by them. */
+  const projects = window.NOVA_PROJECTS || [];
+  const arrowSvg = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4"/></svg>';
+  const linkAttrs = (p) => p.external ? ' target="_blank" rel="noopener"' : '';
+
+  const grid = document.querySelector('[data-projects-grid]');
+  if (grid && projects.length) {
+    grid.innerHTML = projects.map(p => `
+      <div class="project-card reveal" data-industry="${p.industry}" data-title="${p.title}" data-industry-label="${p.industryLabel}" data-tech="${p.tech.join(', ')}" data-url="${p.url}" data-img="${p.img}" data-color="${p.color}" data-desc="${p.desc}">
+        <div class="project-thumb" style="background:${p.color};"><img src="${p.img}" alt="${p.title} website screenshot" loading="lazy" width="1280" height="960"></div>
+        <div class="project-body">
+          <div class="project-top">
+            <div><h3>${p.title}</h3><span class="project-industry">${p.industryLabel}</span></div>
+          </div>
+          <p style="margin:14px 0 0;">${p.blurb}</p>
+          <div class="tech-row">${p.tech.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <a href="${p.url || '#'}" class="project-link"${linkAttrs(p)}>View Project ${arrowSvg}</a>
+        </div>
+      </div>`).join('');
+  }
+
+  const filtersWrap = document.querySelector('[data-project-filters]');
+  if (filtersWrap && projects.length) {
+    const industries = [...new Map(projects.map(p => [p.industry, p.industryLabel])).entries()];
+    filtersWrap.innerHTML =
+      '<button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
+      industries.map(([key, label]) => `<button class="filter-btn" data-filter="${key}" aria-pressed="false">${label}</button>`).join('');
+  }
+
+  const preview = document.querySelector('[data-projects-preview]');
+  if (preview && projects.length) {
+    preview.innerHTML = projects.slice(0, 3).map(p => `
+      <div class="pf-card reveal">
+        <div class="pf-thumb" style="background:${p.color};"><img src="${p.img}" alt="${p.title} website screenshot" loading="lazy" width="1280" height="960"></div>
+        <div class="pf-body">
+          <span class="tag">${p.industryLabel}</span>
+          <h4>${p.title}</h4>
+          <p style="margin:0;">${p.blurb}</p>
+          <a href="${p.url || 'portfolio.html'}"${linkAttrs(p)} class="pf-link">View Project →</a>
+        </div>
+      </div>`).join('');
+  }
+
+  const collage = document.querySelector('[data-projects-collage]');
+  if (collage && projects.length) {
+    collage.innerHTML = projects.slice(0, 3).map((p, i) => `
+      <div class="shot shot-${i + 1}"><img src="${p.img}" alt="${p.title} — built by Nova" loading="lazy" width="1280" height="960"></div>`).join('') +
+      '<span class="caption">Recent work</span>';
+  }
+
   /* --- Reveal on scroll --- */
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {

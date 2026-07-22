@@ -52,9 +52,10 @@
     transition: transform 0.6s var(--ease);
     box-shadow: 0 40px 80px -30px rgba(11,29,58,0.35);
   }
-  .mockup-card .bar { height: 26px; background: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 6px; padding: 0 12px; }
+  .mockup-card .bar { height: 26px; background: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 6px; padding: 0 12px; position: relative; z-index: 1; }
   .mockup-card .bar span { width: 7px; height: 7px; border-radius: 50%; background: rgba(11,29,58,0.25); }
   .mockup-card .body { height: calc(100% - 26px); }
+  .mockup-card .body img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
   .mockup-a { width: 300px; height: 380px; top: 40px; left: 40px; z-index: 3; }
   .mockup-a .body { background: linear-gradient(160deg, var(--navy-900), var(--navy-500)); }
   .mockup-b { width: 260px; height: 320px; top: 0; right: 0; z-index: 2; opacity: 0.92; }
@@ -65,17 +66,32 @@
   .mockup-b, .mockup-c { background: var(--white); }
 
   @media (max-width: 900px) {
+    .hero { padding: 150px 0 80px; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-stack { height: 340px; margin-top: 24px; }
     .mockup-a { width: 220px; height: 280px; left: 10px; }
     .mockup-b { width: 180px; height: 220px; }
     .mockup-c { width: 160px; height: 190px; right: 20px; }
   }
+  @media (max-width: 640px) {
+    .hero { padding: 132px 0 64px; }
+    .hero-stack { height: auto; margin-top: 32px; perspective: none; }
+    .mockup-card { position: static; transform: none !important; }
+    .mockup-b, .mockup-c { display: none; }
+    .mockup-a { width: 100%; height: auto; }
+    .mockup-a .body { height: auto; max-height: 300px; }
+    .hero-meta { margin-top: 40px; gap: 22px; justify-content: space-between; width: 100%; }
+  }
 
-  .strip { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .strip .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .strip { padding: 34px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .strip .container { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
   .strip-label { font-size: var(--fs-caption); color: var(--text-faint); letter-spacing: var(--ls-wide); text-transform: uppercase; }
-  .strip-names { display: flex; gap: 32px; flex-wrap: wrap; font-family: var(--font-head); font-weight: var(--fw-semibold); color: var(--text-faint); }
+  .strip-names { display: flex; justify-content: center; align-items: center; gap: 10px 0; flex-wrap: wrap; font-family: var(--font-head); font-weight: var(--fw-medium); font-size: var(--fs-small); color: var(--text-muted); }
+  .strip-names span { padding: 0 18px; }
+  .strip-names span:not(:last-child) { border-right: 1px solid var(--border-strong); }
+  @media (max-width: 480px) {
+    .strip-names span { padding: 0 12px; }
+  }
 
   .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: var(--gap-lg); flex-wrap: wrap; }
   .section-head h2 { margin: 0; max-width: 560px; }
@@ -192,15 +208,15 @@
     <div class="hero-stack" aria-hidden="true">
       <div class="mockup-card mockup-a" data-rot="-4">
         <div class="bar"><span></span><span></span><span></span></div>
-        <div class="body"></div>
+        <div class="body"><img src="img/elane.jpg" alt="" loading="eager" width="1280" height="960"></div>
       </div>
       <div class="mockup-card mockup-b" data-rot="3">
         <div class="bar"><span></span><span></span><span></span></div>
-        <div class="body"></div>
+        <div class="body"><img src="img/solace.jpg" alt="" loading="lazy" width="1280" height="960"></div>
       </div>
       <div class="mockup-card mockup-c" data-rot="-2">
         <div class="bar"><span></span><span></span><span></span></div>
-        <div class="body"></div>
+        <div class="body"><img src="img/azelea.jpg" alt="" loading="lazy" width="1280" height="960"></div>
       </div>
     </div>
   </div>
@@ -253,35 +269,7 @@
       </div>
       <a href="portfolio.html" class="btn btn-secondary">View All Projects</a>
     </div>
-    <div class="portfolio-preview">
-      <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#5c614c,#a5a58d);"><img src="img/elane.jpg" alt="Elane The Studio homepage" loading="lazy" width="1280" height="960"></div>
-        <div class="pf-body">
-          <span class="tag">Fashion Retail</span>
-          <h4>Elane The Studio</h4>
-          <p style="margin:0;">A minimalist Shopify boutique built around editorial photography.</p>
-          <a href="https://elanethestudio.com" target="_blank" rel="noopener" class="pf-link">View Project →</a>
-        </div>
-      </div>
-      <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#2e4159,#93a8bd);"><img src="img/azelea.jpg" alt="Azelea Co. homepage" loading="lazy" width="1280" height="960"></div>
-        <div class="pf-body">
-          <span class="tag">Fashion Retail</span>
-          <h4>Azelea Co.</h4>
-          <p style="margin:0;">A Shopify store for a tailored fashion label — denim, knitwear, and seasonal edits.</p>
-          <a href="https://azelea.co" target="_blank" rel="noopener" class="pf-link">View Project →</a>
-        </div>
-      </div>
-      <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"><img src="img/solace.jpg" alt="Solace Clinics concept site homepage" loading="lazy" width="1280" height="960"></div>
-        <div class="pf-body">
-          <span class="tag">Wellness</span>
-          <h4>Solace Clinics</h4>
-          <p style="margin:0;">A calm concept site for a multi-location wellness clinic, hand-coded by Nova.</p>
-          <a href="demos/solace/" class="pf-link">View Project →</a>
-        </div>
-      </div>
-    </div>
+    <div class="portfolio-preview" data-projects-preview></div>
   </div>
 </section>
 
@@ -319,7 +307,7 @@
 
 <section id="faq">
   <div class="container faq-wrap">
-    <div class="section-head reveal" style="justify-content:center; text-align:center; flex-direction:column;">
+    <div class="section-head reveal" style="justify-content:center; align-items:center; text-align:center; flex-direction:column;">
       <span class="eyebrow">FAQ</span>
       <h2>Common questions before getting started.</h2>
     </div>
@@ -382,6 +370,7 @@
   </div>
 </footer>
 
+<script src="projects.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
