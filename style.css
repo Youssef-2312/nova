@@ -185,15 +185,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transform: translateY(-2px);
 }
 
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  padding: 10px 18px;
-}
-.btn-ghost:hover { color: var(--navy-700); }
-
-.btn-sm { padding: 10px 20px; font-size: var(--fs-caption); }
-
 /* ============================================
    Navbar
    ============================================ */
@@ -320,6 +311,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* ============================================
+   Page hero (shared base for interior pages)
+   ============================================ */
+.page-hero { padding: 160px 0 40px; }
+
+/* ============================================
    Footer
    ============================================ */
 footer {
@@ -327,6 +323,24 @@ footer {
   color: rgba(255,255,255,0.7);
   padding: 80px 0 32px;
 }
+.footer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 48px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+.footer-cta h3 { color: var(--white); margin-bottom: 6px; }
+.footer-cta p { margin: 0; max-width: 420px; }
+.footer-cta .btn { flex-shrink: 0; }
+@media (max-width: 560px) {
+  .footer-cta { flex-direction: column; align-items: flex-start; }
+  .footer-cta .btn { width: 100%; }
+}
+
 .footer-grid {
   padding-bottom: 40px;
   margin-bottom: 0;
@@ -355,18 +369,6 @@ footer {
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
-  background: var(--navy-100);
-  color: var(--navy-700);
-}
-
 .tag {
   display: inline-flex;
   padding: 5px 11px;
@@ -377,8 +379,6 @@ footer {
   border: 1px solid var(--border);
   color: var(--text-muted);
 }
-
-hr.rule { border: none; border-top: 1px solid var(--border); margin: var(--gap-lg) 0; }
 
 /* ============================================
    Search bar (Portfolio)
