@@ -7,6 +7,13 @@
 <meta name="description" content="Get in touch with Nova to start a website or Shopify project. Book a free consultation.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://www.novastudio.com/contact.html">
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="portfolio.html">
+<link rel="prefetch" href="services.html">
+<link rel="prefetch" href="about.html">
+<link rel="prefetch" href="style.css">
+<link rel="prefetch" href="script.js">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,12 +100,14 @@
         <div><h4>Email</h4><p><a class="value" href="mailto:novadevco@icloud.com">novadevco@icloud.com</a></p></div>
       </div>
       <div class="contact-info-item">
+        <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 2C3 2 5 1.5 6.5 4C7.5 6 5.5 6.5 6.5 8C7.5 10 8 10.5 10 11.5C11.5 12.5 12 10.5 14 11.5C16.5 13 16 15 16 15C16 15 14 16.5 11 15.5C7 14 4 11 2.5 7C1.5 4.5 3 2 3 2Z" stroke="#14295A" stroke-width="1.3"/></svg></div>
+        <div><h4>WhatsApp</h4><p><a class="value" href="https://wa.me/201119990639" target="_blank" rel="noopener">01119990639</a></p></div>
+      </div>
+      <div class="contact-info-item">
         <div class="icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#14295A" stroke-width="1.3"/><path d="M9 5V9L12 11" stroke="#14295A" stroke-width="1.3"/></svg></div>
         <div><h4>Response Time</h4><p>Within 1 business day, most often same-day.</p></div>
       </div>
       <div class="socials">
-        <a class="social-btn" href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="4" stroke="#0A0A0B" stroke-width="1.2"/><circle cx="8" cy="8" r="3" stroke="#0A0A0B" stroke-width="1.2"/></svg></a>
-        <a class="social-btn" href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#0A0A0B" stroke-width="1.2"/><circle cx="5" cy="5" r="0.8" fill="#0A0A0B"/><path d="M5 7.5V12M9 12V9.2C9 8.2 9.7 7.7 10.5 7.7C11.3 7.7 12 8.2 12 9.2V12" stroke="#0A0A0B" stroke-width="1.1"/></svg></a>
         <a class="social-btn" href="#" aria-label="Dribbble"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#0A0A0B" stroke-width="1.2"/></svg></a>
       </div>
     </div>
@@ -124,12 +133,13 @@
           </div>
         </div>
         <div class="field">
-          <label for="budget">Estimated budget</label>
+          <label for="budget">Estimated budget (EGP)</label>
           <select id="budget">
-            <option>Under $3,000</option>
-            <option>$3,000 – $7,000</option>
-            <option>$7,000 – $15,000</option>
-            <option>$15,000+</option>
+            <option>Under EGP 2,000</option>
+            <option>EGP 2,000 – 5,000</option>
+            <option>EGP 5,000 – 8,000</option>
+            <option>EGP 8,000 – 12,000</option>
+            <option>EGP 12,000+</option>
           </select>
         </div>
         <div class="field">
@@ -144,12 +154,12 @@
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
+    <div class="footer-grid row">
+      <div class="col-md-5">
         <span class="footer-logo">Nova</span>
         <p>A small studio building premium, custom websites and Shopify stores for growing businesses.</p>
       </div>
-      <div>
+      <div class="col-md-3">
         <h4>Site</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
@@ -158,19 +168,12 @@
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
-      <div>
+      <div class="col-md-4">
         <h4>Get in touch</h4>
         <ul class="footer-links">
           <li><a href="contact.html">Contact</a></li>
           <li><a href="mailto:novadevco@icloud.com">novadevco@icloud.com</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <ul class="footer-links">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Dribbble</a></li>
+          <li><a href="https://wa.me/201119990639" target="_blank" rel="noopener">WhatsApp: 01119990639</a></li>
         </ul>
       </div>
     </div>

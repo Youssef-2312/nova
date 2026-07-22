@@ -13,6 +13,13 @@
 <meta name="twitter:description" content="High-end, custom-built websites and Shopify stores. See the work, then book a consultation.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://www.novastudio.com/index.html">
+<link rel="prefetch" href="portfolio.html">
+<link rel="prefetch" href="services.html">
+<link rel="prefetch" href="about.html">
+<link rel="prefetch" href="contact.html">
+<link rel="prefetch" href="style.css">
+<link rel="prefetch" href="script.js">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,16 +110,6 @@
   @media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } .why-section { margin: 0 16px; padding: 64px 24px; } }
   @media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
 
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .t-card { padding: 32px; }
-  .t-card .stars { color: var(--navy-500); font-size: 0.95rem; margin-bottom: 16px; letter-spacing: 3px; }
-  .t-card p.quote { color: var(--text); font-size: 1.02rem; line-height: var(--lh-relaxed); }
-  .t-person { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
-  .t-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(160deg, var(--navy-500), var(--navy-900)); flex-shrink: 0; }
-  .t-name { font-weight: var(--fw-semibold); font-size: var(--fs-small); color: var(--black); }
-  .t-role { font-size: var(--fs-caption); color: var(--text-faint); }
-  @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
-
   .faq-wrap { max-width: 760px; margin: 0 auto; }
   .accordion-item { border-bottom: 1px solid var(--border); }
   .accordion-trigger {
@@ -194,7 +191,7 @@
       <div class="hero-meta">
         <div><div class="stat-num">30+</div><div class="stat-label">Sites shipped</div></div>
         <div><div class="stat-num">98</div><div class="stat-label">Avg. Lighthouse score</div></div>
-        <div><div class="stat-num">4.9/5</div><div class="stat-label">Client rating</div></div>
+        <div><div class="stat-num">4/5</div><div class="stat-label">Client rating</div></div>
       </div>
     </div>
     <div class="hero-stack" aria-hidden="true">
@@ -324,33 +321,6 @@
   </div>
 </section>
 
-<section id="testimonials">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">Client Feedback</span>
-        <h2>What it's like to work with Nova.</h2>
-      </div>
-    </div>
-    <div class="testimonials-grid">
-      <div class="card t-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Nova rebuilt our Shopify store in three weeks and our conversion rate went up almost immediately. The whole process felt effortless.</p>
-        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Priya Nandan</div><div class="t-role">Founder, Aureline Studio</div></div></div>
-      </div>
-      <div class="card t-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="quote">They asked better questions about our business than any agency we'd worked with before. The site reflects that.</p>
-        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Daniel Osei</div><div class="t-role">COO, Marrow & Co.</div></div></div>
-      </div>
-      <div class="card t-card reveal">
-        <div class="stars">★★★★★</div>
-        <p class="quote">Clean communication, on-time delivery, and a site that finally looks like the quality of care we actually provide.</p>
-        <div class="t-person"><div class="t-avatar"></div><div><div class="t-name">Elena Cross</div><div class="t-role">Director, Solace Clinics</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="faq">
   <div class="container faq-wrap">
@@ -393,12 +363,12 @@
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
+    <div class="footer-grid row">
+      <div class="col-md-5">
         <span class="footer-logo">Nova</span>
         <p>A small studio building premium, custom websites and Shopify stores for growing businesses.</p>
       </div>
-      <div>
+      <div class="col-md-3">
         <h4>Site</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
@@ -407,19 +377,11 @@
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
-      <div>
+      <div class="col-md-4">
         <h4>Get in touch</h4>
         <ul class="footer-links">
           <li><a href="contact.html">Contact</a></li>
           <li><a href="mailto:novadevco@icloud.com">novadevco@icloud.com</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <ul class="footer-links">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Dribbble</a></li>
         </ul>
       </div>
     </div>

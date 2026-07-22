@@ -328,12 +328,11 @@ footer {
   padding: 80px 0 32px;
 }
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 40px;
+  margin-bottom: 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+.footer-grid > [class*="col-"] { margin-bottom: 32px; }
 .footer-grid h4 { color: var(--white); font-size: var(--fs-small); letter-spacing: var(--ls-wide); text-transform: uppercase; margin-bottom: 20px; }
 .footer-grid p { color: rgba(255,255,255,0.55); }
 .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
@@ -345,13 +344,6 @@ footer {
   flex-wrap: wrap; gap: 12px;
 }
 .footer-logo { color: var(--white); font-family: var(--font-head); font-weight: var(--fw-bold); font-size: 1.25rem; margin-bottom: 12px; display:block;}
-
-@media (max-width: 900px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 560px) {
-  .footer-grid { grid-template-columns: 1fr; }
-}
 
 /* ============================================
    Utility animation classes
