@@ -220,10 +220,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   gap: 8px;
 }
-.nav-logo .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--navy-500);
-  box-shadow: 0 0 0 4px var(--navy-100);
+.nav-logo img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  border-radius: 6px;
 }
 .nav-links {
   display: flex;
