@@ -17,12 +17,45 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-  .about-visual { height: 420px; border-radius: var(--radius-lg); background: linear-gradient(160deg, var(--navy-900), var(--navy-500)); position: relative; overflow: hidden; }
-  .about-visual::after {
-    content: ""; position: absolute; inset: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 55%);
+  .about-visual { height: 460px; position: relative; }
+  .about-visual .shot {
+    position: absolute;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+    box-shadow: 0 30px 60px -28px rgba(11, 29, 58, 0.35);
+    transition: transform 0.45s var(--ease);
   }
-  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-visual { height: 280px; order: -1; } }
+  .about-visual .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .about-visual .shot-1 { width: 62%; height: 300px; top: 20px; left: 0; z-index: 3; transform: rotate(-3deg); }
+  .about-visual .shot-2 { width: 54%; height: 250px; top: 0; right: 0; z-index: 2; transform: rotate(2.5deg); }
+  .about-visual .shot-3 { width: 56%; height: 240px; bottom: 0; right: 8%; z-index: 1; transform: rotate(-1.5deg); }
+  .about-visual:hover .shot-1 { transform: rotate(-3deg) translateY(-6px); }
+  .about-visual:hover .shot-2 { transform: rotate(2.5deg) translateY(-4px); }
+  .about-visual:hover .shot-3 { transform: rotate(-1.5deg) translateY(-2px); }
+  .about-visual .caption {
+    position: absolute;
+    bottom: 6px; left: 0;
+    z-index: 4;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--navy-700);
+    box-shadow: 0 12px 28px -14px rgba(11, 29, 58, 0.3);
+  }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { height: 340px; order: -1; }
+    .about-visual .shot-1 { height: 220px; }
+    .about-visual .shot-2 { height: 180px; }
+    .about-visual .shot-3 { height: 170px; }
+  }
 
   .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   @media (max-width: 900px) { .values-grid { grid-template-columns: 1fr; } }
@@ -72,7 +105,12 @@
       <p class="lead" style="margin-top:20px;">Nova started from a simple frustration — most "custom" websites are really just templates with a new logo dropped in. We build differently. Every project starts as an actual design, built around your business, then coded by hand rather than assembled from a page builder.</p>
       <p style="margin-top:16px;">We work with a small number of clients at a time, so every project gets real attention — from first sketch to the last pixel before launch.</p>
     </div>
-    <div class="about-visual reveal" aria-hidden="true"></div>
+    <div class="about-visual reveal">
+      <div class="shot shot-1"><img src="img/elane.jpg" alt="Elane The Studio — Shopify boutique built by Nova" loading="lazy" width="1280" height="960"></div>
+      <div class="shot shot-2"><img src="img/solace.jpg" alt="Solace Clinics — concept site hand-coded by Nova" loading="lazy" width="1280" height="960"></div>
+      <div class="shot shot-3"><img src="img/azelea.jpg" alt="Azelea Co. — Shopify store built by Nova" loading="lazy" width="1280" height="960"></div>
+      <span class="caption">Recent work</span>
+    </div>
   </div>
 </header>
 
