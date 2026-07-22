@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.novastudio.com/sitemap.xml
+Sitemap: https://nova-devco.netlify.app/sitemap.xml

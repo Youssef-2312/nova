@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDesc = modalOverlay.querySelector('.modal-desc');
     const modalTech = modalOverlay.querySelector('.modal-tech');
     const modalClose = modalOverlay.querySelector('.modal-close');
+    const modalVisit = modalOverlay.querySelector('.modal-visit');
     let lastFocused = null;
 
     const openModal = (card) => {
@@ -128,6 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (modalIndustry) modalIndustry.textContent = card.dataset.industryLabel || '';
       if (modalTitle) modalTitle.textContent = card.dataset.title || '';
       if (modalDesc) modalDesc.textContent = card.dataset.desc || '';
+      if (modalVisit) {
+        if (card.dataset.url) {
+          modalVisit.href = card.dataset.url;
+          modalVisit.style.display = '';
+        } else {
+          modalVisit.style.display = 'none';
+        }
+      }
       if (modalTech) {
         modalTech.innerHTML = '';
         (card.dataset.tech || '').split(',').filter(Boolean).forEach(t => {
