@@ -125,7 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openModal = (card) => {
       lastFocused = document.activeElement;
-      if (modalThumb) modalThumb.style.background = card.dataset.color || 'var(--navy-500)';
+      if (modalThumb) {
+        modalThumb.style.background = card.dataset.color || 'var(--navy-500)';
+        if (card.dataset.img) {
+          modalThumb.style.backgroundImage = `url("${card.dataset.img}")`;
+          modalThumb.style.backgroundSize = 'cover';
+          modalThumb.style.backgroundPosition = 'top center';
+        }
+      }
       if (modalIndustry) modalIndustry.textContent = card.dataset.industryLabel || '';
       if (modalTitle) modalTitle.textContent = card.dataset.title || '';
       if (modalDesc) modalDesc.textContent = card.dataset.desc || '';

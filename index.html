@@ -89,7 +89,9 @@
   .portfolio-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .pf-card { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); background: var(--white); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
   .pf-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -30px rgba(11,29,58,0.3); }
-  .pf-thumb { height: 190px; position: relative; }
+  .pf-thumb { height: 190px; position: relative; overflow: hidden; }
+  .pf-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.5s var(--ease); }
+  .pf-card:hover .pf-thumb img { transform: scale(1.04); }
   .pf-body { padding: 22px 22px 26px; }
   .pf-body .tag { margin-bottom: 12px; }
   .pf-body h4 { margin-bottom: 6px; }
@@ -253,7 +255,7 @@
     </div>
     <div class="portfolio-preview">
       <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#5c614c,#a5a58d);"></div>
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#5c614c,#a5a58d);"><img src="img/elane.jpg" alt="Elane The Studio homepage" loading="lazy" width="1280" height="960"></div>
         <div class="pf-body">
           <span class="tag">Fashion Retail</span>
           <h4>Elane The Studio</h4>
@@ -262,7 +264,7 @@
         </div>
       </div>
       <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#2e4159,#93a8bd);"></div>
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#2e4159,#93a8bd);"><img src="img/azelea.jpg" alt="Azelea Co. homepage" loading="lazy" width="1280" height="960"></div>
         <div class="pf-body">
           <span class="tag">Fashion Retail</span>
           <h4>Azelea Co.</h4>
@@ -271,7 +273,7 @@
         </div>
       </div>
       <div class="pf-card reveal">
-        <div class="pf-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"></div>
+        <div class="pf-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"><img src="img/solace.jpg" alt="Solace Clinics concept site homepage" loading="lazy" width="1280" height="960"></div>
         <div class="pf-body">
           <span class="tag">Wellness</span>
           <h4>Solace Clinics</h4>

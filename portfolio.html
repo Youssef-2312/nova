@@ -32,7 +32,9 @@
   .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
   .project-card { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; background: var(--white); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
   .project-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -28px rgba(11,29,58,0.3); }
-  .project-thumb { height: 210px; position: relative; }
+  .project-thumb { height: 210px; position: relative; overflow: hidden; }
+  .project-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 0.5s var(--ease); }
+  .project-card:hover .project-thumb img { transform: scale(1.04); }
   .project-body { padding: 26px 28px 30px; }
   .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .project-body h3 { margin-bottom: 4px; }
@@ -98,8 +100,8 @@
     </div>
 
     <div class="projects-grid">
-      <div class="project-card reveal" data-industry="retail" data-title="Elane The Studio" data-industry-label="Fashion Retail" data-tech="Shopify, Custom Theme" data-url="https://elanethestudio.com" data-color="linear-gradient(150deg,#5c614c,#a5a58d)" data-desc="A minimalist Shopify boutique for a contemporary Egyptian fashion brand — editorial photography, a clean collection layout, and a streamlined cart built around elevated everyday pieces.">
-        <div class="project-thumb" style="background:linear-gradient(150deg,#5c614c,#a5a58d);"></div>
+      <div class="project-card reveal" data-industry="retail" data-title="Elane The Studio" data-industry-label="Fashion Retail" data-tech="Shopify, Custom Theme" data-url="https://elanethestudio.com" data-img="img/elane.jpg" data-color="linear-gradient(150deg,#5c614c,#a5a58d)" data-desc="A minimalist Shopify boutique for a contemporary Egyptian fashion brand — editorial photography, a clean collection layout, and a streamlined cart built around elevated everyday pieces.">
+        <div class="project-thumb" style="background:linear-gradient(150deg,#5c614c,#a5a58d);"><img src="img/elane.jpg" alt="Elane The Studio homepage — editorial fashion photography over a minimalist Shopify storefront" loading="lazy" width="1280" height="960"></div>
         <div class="project-body">
           <div class="project-top">
             <div><h3>Elane The Studio</h3><span class="project-industry">Fashion Retail</span></div>
@@ -110,8 +112,8 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="retail" data-title="Azelea Co." data-industry-label="Fashion Retail" data-tech="Shopify, Custom Theme" data-url="https://azelea.co" data-color="linear-gradient(150deg,#2e4159,#93a8bd)" data-desc="A Shopify store for a tailored fashion label — denim, knitwear, and seasonal edits presented in a clean, easy-to-browse collection structure with free-shipping incentives built into the flow.">
-        <div class="project-thumb" style="background:linear-gradient(150deg,#2e4159,#93a8bd);"></div>
+      <div class="project-card reveal" data-industry="retail" data-title="Azelea Co." data-industry-label="Fashion Retail" data-tech="Shopify, Custom Theme" data-url="https://azelea.co" data-img="img/azelea.jpg" data-color="linear-gradient(150deg,#2e4159,#93a8bd)" data-desc="A Shopify store for a tailored fashion label — denim, knitwear, and seasonal edits presented in a clean, easy-to-browse collection structure with free-shipping incentives built into the flow.">
+        <div class="project-thumb" style="background:linear-gradient(150deg,#2e4159,#93a8bd);"><img src="img/azelea.jpg" alt="Azelea Co. homepage — The Summer Edit collection hero on a clean Shopify storefront" loading="lazy" width="1280" height="960"></div>
         <div class="project-body">
           <div class="project-top">
             <div><h3>Azelea Co.</h3><span class="project-industry">Fashion Retail</span></div>
@@ -122,8 +124,8 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-industry="wellness" data-title="Solace Clinics" data-industry-label="Wellness" data-tech="HTML, CSS, JavaScript" data-url="demos/solace/" data-color="linear-gradient(150deg,#eef1f7,#c7d1e3)" data-desc="A calm, conversion-focused concept site for a multi-location wellness clinic — designed and hand-coded by Nova to show what a bespoke, fully custom build looks like. Explore the live demo.">
-        <div class="project-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"></div>
+      <div class="project-card reveal" data-industry="wellness" data-title="Solace Clinics" data-industry-label="Wellness" data-tech="HTML, CSS, JavaScript" data-url="demos/solace/" data-img="img/solace.jpg" data-color="linear-gradient(150deg,#eef1f7,#c7d1e3)" data-desc="A calm, conversion-focused concept site for a multi-location wellness clinic — designed and hand-coded by Nova to show what a bespoke, fully custom build looks like. Explore the live demo.">
+        <div class="project-thumb" style="background:linear-gradient(150deg,#eef1f7,#c7d1e3);"><img src="img/solace.jpg" alt="Solace Clinics homepage — serif headline and arch shapes on a parchment background" loading="lazy" width="1280" height="960"></div>
         <div class="project-body">
           <div class="project-top">
             <div><h3>Solace Clinics</h3><span class="project-industry">Wellness</span></div>

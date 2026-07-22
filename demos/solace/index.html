@@ -9,276 +9,389 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --evergreen: #1f3a2d;
-    --evergreen-deep: #14281e;
-    --sage: #7f9183;
-    --sage-light: #aebbaf;
-    --cream: #f6f4ee;
-    --stone: #e7e2d6;
-    --white: #ffffff;
-    --ink: #1c211d;
-    --ink-soft: #55605a;
-    --ink-faint: #8a948d;
+    --parchment: #f3efe6;
+    --parchment-deep: #eae4d6;
+    --evergreen: #22382b;
+    --evergreen-deep: #182a20;
+    --terracotta: #c96f4a;
+    --terracotta-deep: #a9532f;
+    --sage: #8fa08e;
+    --ink: #22382b;
+    --ink-soft: #5b6a5e;
+    --ink-faint: #93a095;
+    --line: #d8d0bd;
     --serif: "Fraunces", Georgia, serif;
-    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --sans: "Karla", "Helvetica Neue", Arial, sans-serif;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --radius: 18px;
-    --container: 1140px;
+    --container: 1180px;
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 
   body {
     margin: 0;
-    background: var(--cream);
+    background: var(--parchment);
     color: var(--ink);
     font-family: var(--sans);
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
-  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.12; margin: 0 0 0.5em; color: var(--ink); letter-spacing: -0.01em; }
-  h1 { font-size: clamp(2.6rem, 5vw + 1rem, 4.25rem); }
-  h2 { font-size: clamp(1.9rem, 2.5vw + 1rem, 2.75rem); }
-  h3 { font-size: 1.35rem; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.08; margin: 0 0 0.5em; color: var(--evergreen); letter-spacing: -0.01em; }
+  h1 { font-size: clamp(3rem, 6.5vw + 1rem, 5.5rem); }
+  h2 { font-size: clamp(2rem, 3vw + 1rem, 3.1rem); }
+  h3 { font-size: 1.4rem; font-weight: 500; }
+  h1 em, h2 em { font-style: italic; color: var(--terracotta); }
   p { margin: 0 0 1em; color: var(--ink-soft); }
   a { color: inherit; text-decoration: none; }
 
   .container { max-width: var(--container); margin: 0 auto; padding: 0 28px; }
-  section { padding: clamp(64px, 8vw, 120px) 0; }
+  section { padding: clamp(70px, 9vw, 130px) 0; }
 
-  .eyebrow {
-    display: inline-block;
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 16px;
+    color: var(--terracotta);
+    margin-bottom: 20px;
   }
+  .kicker::before { content: ""; width: 26px; height: 1px; background: var(--terracotta); }
+  .kicker.centered { justify-content: center; }
+  .kicker.centered::after { content: ""; width: 26px; height: 1px; background: var(--terracotta); }
 
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--evergreen);
+    outline: 2px solid var(--terracotta);
     outline-offset: 3px;
-    border-radius: 4px;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 15px 30px;
-    border-radius: 999px;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 3px;
     border: 1px solid transparent;
     font-family: var(--sans);
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.3s var(--ease);
     white-space: nowrap;
   }
-  .btn:active { transform: scale(0.97); }
-  .btn-solid { background: var(--evergreen); color: var(--cream); }
-  .btn-solid:hover { background: var(--evergreen-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(31, 58, 45, 0.5); }
-  .btn-line { background: transparent; color: var(--evergreen); border-color: var(--sage-light); }
-  .btn-line:hover { border-color: var(--evergreen); transform: translateY(-2px); }
+  .btn:active { transform: scale(0.98); }
+  .btn-fill { background: var(--evergreen); color: var(--parchment); }
+  .btn-fill:hover { background: var(--terracotta); }
+  .btn-terra { background: var(--terracotta); color: var(--parchment); }
+  .btn-terra:hover { background: var(--terracotta-deep); }
+  .btn-line { background: transparent; color: var(--evergreen); border-color: var(--evergreen); }
+  .btn-line:hover { background: var(--evergreen); color: var(--parchment); }
 
-  /* --- Nav --- */
+  /* --- Top bar + nav --- */
+  .topbar {
+    background: var(--evergreen);
+    color: rgba(243, 239, 230, 0.75);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 9px 16px;
+  }
   .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: sticky;
+    top: 0;
     z-index: 100;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
     padding: 18px 0;
-    background: rgba(246, 244, 238, 0.72);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-    border-bottom: 1px solid transparent;
-    transition: padding 0.35s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
   }
-  .nav.scrolled { padding: 12px 0; border-bottom-color: var(--stone); background: rgba(246, 244, 238, 0.88); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--evergreen); display: flex; align-items: center; gap: 10px; }
-  .logo svg { flex-shrink: 0; }
-  .nav-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .nav-links.right { justify-content: flex-end; }
   .nav-links a {
-    padding: 8px 14px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; color: var(--ink-soft);
-    transition: color 0.25s var(--ease), background 0.25s var(--ease);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
   }
-  .nav-links a:hover { color: var(--evergreen); background: rgba(127, 145, 131, 0.14); }
-  .nav-cta { display: flex; align-items: center; gap: 12px; }
-  .menu-btn { display: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--sage-light); background: transparent; cursor: pointer; align-items: center; justify-content: center; }
-  @media (max-width: 860px) {
+  .nav-links a:hover { color: var(--evergreen); border-bottom-color: var(--terracotta); }
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--evergreen);
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .logo .mark { color: var(--terracotta); }
+  .menu-btn { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 3px; background: transparent; cursor: pointer; align-items: center; justify-content: center; justify-self: end; }
+  @media (max-width: 920px) {
+    .nav-inner { grid-template-columns: auto 1fr auto; }
     .nav-links { display: none; }
-    .nav-cta .btn { display: none; }
+    .logo { text-align: left; }
     .menu-btn { display: flex; }
   }
 
   .mobile-nav {
-    position: fixed; inset: 0; z-index: 99;
-    background: rgba(246, 244, 238, 0.98);
-    backdrop-filter: blur(18px);
-    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+    position: fixed; inset: 0; z-index: 120;
+    background: var(--evergreen);
+    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 30px;
   }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-family: var(--serif); font-size: 1.6rem; color: var(--evergreen); }
-  .mobile-nav .btn { font-family: var(--sans); font-size: 0.9rem; margin-top: 10px; }
-  .mobile-close { position: absolute; top: 22px; right: 22px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--sage-light); background: var(--white); cursor: pointer; font-size: 1.3rem; color: var(--evergreen); }
+  .mobile-nav a { font-family: var(--serif); font-size: 2rem; color: var(--parchment); }
+  .mobile-nav a:hover { color: var(--terracotta); }
+  .mobile-nav .btn { font-family: var(--sans); font-size: 0.78rem; margin-top: 8px; }
+  .mobile-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 46px; height: 46px; border-radius: 3px;
+    border: 1px solid rgba(243,239,230,0.3); background: transparent;
+    color: var(--parchment); font-size: 1.4rem; cursor: pointer;
+  }
 
   /* --- Hero --- */
-  .hero { padding: 190px 0 110px; position: relative; overflow: hidden; }
-  .hero::before {
+  .hero { padding: clamp(60px, 8vw, 110px) 0 0; text-align: center; }
+  .hero .kicker { justify-content: center; }
+  .hero .kicker::after { content: ""; width: 26px; height: 1px; background: var(--terracotta); }
+  .hero h1 { max-width: 820px; margin: 0 auto 24px; }
+  .hero .lead { max-width: 520px; margin: 0 auto; font-size: 1.08rem; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
+
+  .hero-arches {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 22px;
+    align-items: end;
+    max-width: 880px;
+    margin: clamp(48px, 6vw, 76px) auto 0;
+  }
+  .arch {
+    border-radius: 999px 999px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .arch-1 { height: 240px; background: linear-gradient(165deg, var(--sage), var(--evergreen)); }
+  .arch-2 { height: 340px; background: linear-gradient(165deg, var(--evergreen), var(--sage)); }
+  .arch-3 { height: 240px; background: linear-gradient(165deg, var(--terracotta), var(--terracotta-deep)); }
+  .arch::after {
     content: "";
-    position: absolute;
-    top: -220px; right: -180px;
-    width: 620px; height: 620px;
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 18%, rgba(243,239,230,0.28), transparent 55%);
+  }
+  .arch-2 .arch-label {
+    position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+    background: rgba(243, 239, 230, 0.92);
+    padding: 12px 22px;
+    border-radius: 2px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--evergreen);
+    white-space: nowrap;
+    z-index: 1;
+  }
+  @media (max-width: 700px) {
+    .hero-arches { grid-template-columns: 1fr 1.4fr; }
+    .arch-3 { display: none; }
+  }
+
+  /* --- Ticker --- */
+  .ticker {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    padding: 16px 0;
+    background: var(--parchment-deep);
+  }
+  .ticker-track {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker span {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    white-space: nowrap;
+  }
+  .ticker span::after { content: "✳"; font-style: normal; color: var(--terracotta); font-size: 0.8rem; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+  /* --- Services (editorial rows) --- */
+  .services-intro { max-width: 560px; margin-bottom: clamp(40px, 5vw, 64px); }
+  .service-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 1.1fr auto;
+    gap: 30px;
+    align-items: center;
+    padding: 38px 0;
+    border-top: 1px solid var(--line);
+    transition: background 0.3s var(--ease);
+  }
+  .service-row:last-of-type { border-bottom: 1px solid var(--line); }
+  .service-row:hover { background: rgba(234, 228, 214, 0.5); }
+  .service-num {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .service-row h3 { margin: 0; }
+  .service-row p { margin: 0; font-size: 0.95rem; }
+  .service-go {
+    width: 46px; height: 46px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(127, 145, 131, 0.22), transparent 65%);
-    pointer-events: none;
-  }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-  .hero h1 em { font-style: italic; color: var(--sage); }
-  .hero .lead { font-size: 1.12rem; max-width: 460px; margin-top: 18px; }
-  .hero-actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
-  .hero-stats { display: flex; gap: 34px; margin-top: 52px; flex-wrap: wrap; }
-  .hero-stats .num { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: var(--evergreen); }
-  .hero-stats .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-faint); }
-
-  .hero-art { position: relative; height: 460px; }
-  .hero-art .panel {
-    position: absolute; border-radius: var(--radius); overflow: hidden;
-    box-shadow: 0 40px 80px -34px rgba(31, 58, 45, 0.4);
-  }
-  .panel-a { width: 62%; height: 78%; top: 0; right: 0; background: linear-gradient(155deg, var(--evergreen), var(--sage)); }
-  .panel-a::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 28% 22%, rgba(255,255,255,0.22), transparent 55%); }
-  .panel-b { width: 44%; height: 52%; bottom: 0; left: 0; background: linear-gradient(155deg, var(--stone), var(--sage-light)); }
-  .panel-c {
-    width: 38%; min-height: 118px; bottom: 42px; right: 26px;
-    background: rgba(255,255,255,0.82);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.7);
-    padding: 18px 20px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .panel-c .quote { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--evergreen); line-height: 1.4; margin: 0; }
-  .panel-c .who { font-size: 0.72rem; color: var(--ink-faint); margin: 8px 0 0; }
-  @media (max-width: 860px) {
-    .hero { padding: 150px 0 80px; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-art { height: 320px; }
-  }
-
-  /* --- Trust strip --- */
-  .strip { border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); padding: 26px 0; }
-  .strip-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-  .strip-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
-  .strip-items { display: flex; gap: 30px; flex-wrap: wrap; font-family: var(--serif); font-weight: 500; color: var(--sage); }
-
-  /* --- Services --- */
-  .services-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 52px; flex-wrap: wrap; }
-  .services-head h2 { margin: 0; max-width: 520px; }
-  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  .service {
-    background: var(--white);
-    border: 1px solid var(--stone);
-    border-radius: var(--radius);
-    padding: 30px 26px;
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-  }
-  .service:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -28px rgba(31, 58, 45, 0.35); }
-  .service .glyph {
-    width: 46px; height: 46px; border-radius: 14px;
-    background: rgba(127, 145, 131, 0.15);
+    border: 1px solid var(--line);
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
+    color: var(--evergreen);
+    transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
   }
-  .service h3 { font-size: 1.15rem; margin-bottom: 8px; }
-  .service p { font-size: 0.9rem; margin: 0; }
-  @media (max-width: 960px) { .services-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+  .service-row:hover .service-go { background: var(--evergreen); color: var(--parchment); border-color: var(--evergreen); }
+  @media (max-width: 860px) {
+    .service-row { grid-template-columns: 60px 1fr; gap: 14px; }
+    .service-num { font-size: 1.8rem; }
+    .service-row p { grid-column: 2; }
+    .service-go { display: none; }
+  }
 
-  /* --- Approach --- */
-  .approach { background: var(--evergreen); color: rgba(246,244,238,0.85); }
-  .approach .eyebrow { color: var(--sage-light); }
-  .approach h2 { color: var(--cream); max-width: 560px; }
-  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
-  .approach-item .step { font-family: var(--serif); font-size: 0.95rem; color: var(--sage-light); margin-bottom: 12px; display: block; }
-  .approach-item h3 { color: var(--cream); font-size: 1.2rem; }
-  .approach-item p { color: rgba(246,244,238,0.62); font-size: 0.92rem; margin: 0; }
-  @media (max-width: 800px) { .approach-grid { grid-template-columns: 1fr; gap: 30px; } }
+  /* --- Approach (dark band, oversized quote + steps) --- */
+  .approach { background: var(--evergreen); color: rgba(243, 239, 230, 0.8); }
+  .approach .kicker { color: var(--terracotta); }
+  .approach .kicker::before { background: var(--terracotta); }
+  .approach-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3vw + 0.5rem, 2.9rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--parchment);
+    max-width: 860px;
+    margin: 0 0 clamp(48px, 6vw, 72px);
+  }
+  .approach-quote em { font-style: italic; color: var(--terracotta); }
+  .approach-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(243,239,230,0.14); border: 1px solid rgba(243,239,230,0.14); }
+  .approach-step { background: var(--evergreen); padding: 34px 30px; }
+  .approach-step .n { font-family: var(--serif); font-style: italic; color: var(--terracotta); font-size: 1rem; display: block; margin-bottom: 14px; }
+  .approach-step h3 { color: var(--parchment); font-size: 1.2rem; }
+  .approach-step p { color: rgba(243,239,230,0.55); font-size: 0.92rem; margin: 0; }
+  @media (max-width: 800px) { .approach-steps { grid-template-columns: 1fr; } }
 
-  /* --- Locations --- */
-  .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+  /* --- Locations (arch cards) --- */
+  .locations { background: var(--parchment-deep); }
+  .locations-head { text-align: center; max-width: 560px; margin: 0 auto clamp(48px, 6vw, 72px); }
+  .locations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
   .location {
-    background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius);
+    text-align: center;
+    background: var(--parchment);
+    border: 1px solid var(--line);
+    border-radius: 999px 999px 6px 6px;
+    padding: 0 0 34px;
     overflow: hidden;
     transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
   }
-  .location:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -28px rgba(31, 58, 45, 0.35); }
-  .location .map { height: 150px; }
-  .location:nth-child(1) .map { background: linear-gradient(150deg, var(--sage), var(--evergreen)); }
-  .location:nth-child(2) .map { background: linear-gradient(150deg, var(--stone), var(--sage-light)); }
-  .location:nth-child(3) .map { background: linear-gradient(150deg, var(--evergreen), var(--sage-light)); }
-  .location-body { padding: 24px 26px 28px; }
-  .location-body h3 { font-size: 1.15rem; margin-bottom: 4px; }
-  .location-body .hours { font-size: 0.82rem; color: var(--ink-faint); }
-  .location-body p { font-size: 0.9rem; margin: 10px 0 0; }
-  @media (max-width: 860px) { .locations-grid { grid-template-columns: 1fr; } }
+  .location:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(34, 56, 43, 0.45); }
+  .location .map { height: 190px; margin-bottom: 26px; }
+  .location:nth-child(1) .map { background: linear-gradient(165deg, var(--sage), var(--evergreen)); }
+  .location:nth-child(2) .map { background: linear-gradient(165deg, var(--terracotta), var(--terracotta-deep)); }
+  .location:nth-child(3) .map { background: linear-gradient(165deg, var(--evergreen), var(--sage)); }
+  .location h3 { font-size: 1.25rem; margin-bottom: 4px; }
+  .location .hours { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracotta); font-weight: 700; }
+  .location p { font-size: 0.9rem; margin: 12px auto 0; max-width: 240px; }
+  @media (max-width: 860px) { .locations-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
 
-  /* --- Quotes --- */
-  .quotes { background: var(--stone); }
-  .quotes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 48px; }
-  .quote-card { background: var(--white); border-radius: var(--radius); padding: 34px 32px; }
-  .quote-card blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1.5; color: var(--evergreen); }
-  .quote-card figcaption { margin-top: 18px; font-size: 0.82rem; color: var(--ink-faint); }
-  @media (max-width: 760px) { .quotes-grid { grid-template-columns: 1fr; } }
+  /* --- Stories --- */
+  .stories { text-align: center; }
+  .story {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(30px, 4vw, 48px) 0;
+  }
+  .story + .story { border-top: 1px solid var(--line); }
+  .story .mark { font-family: var(--serif); font-size: 3rem; color: var(--terracotta); line-height: 1; display: block; margin-bottom: 10px; }
+  .story blockquote {
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2vw + 0.5rem, 1.8rem);
+    line-height: 1.4;
+    color: var(--evergreen);
+  }
+  .story figcaption { margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; }
 
   /* --- Booking --- */
-  .booking-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
-  .booking-info p.lead { font-size: 1.08rem; }
-  .booking-note { display: flex; gap: 14px; padding: 18px 0; border-top: 1px solid var(--stone); font-size: 0.9rem; color: var(--ink-soft); align-items: baseline; }
-  .booking-note:last-of-type { border-bottom: 1px solid var(--stone); }
-  .booking-note .n { font-family: var(--serif); color: var(--sage); }
-  .booking-form {
-    background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius);
-    padding: 38px;
+  .booking { background: var(--evergreen); padding-bottom: 0; }
+  .booking-panel {
+    background: var(--terracotta);
+    border-radius: 6px 6px 0 0;
+    padding: clamp(44px, 6vw, 80px) clamp(26px, 5vw, 80px);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(36px, 5vw, 72px);
+    align-items: start;
   }
+  .booking-panel .kicker { color: var(--parchment); }
+  .booking-panel .kicker::before { background: var(--parchment); }
+  .booking-panel h2 { color: var(--parchment); }
+  .booking-panel .lead { color: rgba(243, 239, 230, 0.85); }
+  .booking-fact { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid rgba(243,239,230,0.3); font-size: 0.92rem; color: rgba(243,239,230,0.9); align-items: baseline; }
+  .booking-fact:last-of-type { border-bottom: 1px solid rgba(243,239,230,0.3); }
+  .booking-fact .n { font-family: var(--serif); font-style: italic; color: var(--parchment); white-space: nowrap; }
+
+  .booking-form { background: var(--parchment); border-radius: 6px; padding: clamp(28px, 4vw, 42px); }
   .bf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .bf-field { margin-bottom: 18px; }
-  .bf-field label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 7px; color: var(--ink); }
+  .bf-field label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; color: var(--evergreen); }
   .bf-field input, .bf-field select, .bf-field textarea {
-    width: 100%; padding: 13px 15px; border-radius: 10px; border: 1px solid var(--stone);
-    background: var(--cream); font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
+    width: 100%; padding: 14px 15px; border-radius: 3px; border: 1px solid var(--line);
+    background: var(--parchment-deep); font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
     transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
   }
   .bf-field input:focus, .bf-field select:focus, .bf-field textarea:focus {
-    outline: none; border-color: var(--sage); box-shadow: 0 0 0 4px rgba(127, 145, 131, 0.16);
+    outline: none; border-color: var(--terracotta); box-shadow: 0 0 0 4px rgba(201, 111, 74, 0.18);
   }
   .bf-field textarea { min-height: 96px; resize: vertical; }
-  .bf-field input:user-invalid { border-color: #a4442f; }
-  @media (max-width: 900px) { .booking-grid { grid-template-columns: 1fr; } }
+  .bf-field input:user-invalid { border-color: #8f2f14; }
+  @media (max-width: 900px) { .booking-panel { grid-template-columns: 1fr; } }
   @media (max-width: 540px) { .bf-row { grid-template-columns: 1fr; } }
 
   /* --- Footer --- */
-  .footer { background: var(--evergreen-deep); color: rgba(246,244,238,0.65); padding: 64px 0 30px; }
-  .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(246,244,238,0.12); }
-  .footer .logo { color: var(--cream); margin-bottom: 10px; }
-  .footer-top p { color: rgba(246,244,238,0.5); max-width: 320px; font-size: 0.9rem; }
-  .footer-col h4 { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); margin: 0 0 16px; }
-  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col a { font-size: 0.88rem; color: rgba(246,244,238,0.6); transition: color 0.25s var(--ease); }
-  .footer-col a:hover { color: var(--cream); }
-  .footer-bottom { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding-top: 26px; font-size: 0.78rem; color: rgba(246,244,238,0.4); }
-  .footer-bottom a { color: var(--sage-light); }
-  .footer-bottom a:hover { color: var(--cream); }
+  .footer { background: var(--evergreen); color: rgba(243, 239, 230, 0.6); text-align: center; padding: clamp(56px, 7vw, 90px) 0 30px; }
+  .footer .wordmark { font-family: var(--serif); font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; color: var(--parchment); line-height: 1; }
+  .footer .wordmark .mark { color: var(--terracotta); }
+  .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 34px 0 44px; }
+  .footer-links a { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(243,239,230,0.65); transition: color 0.25s var(--ease); }
+  .footer-links a:hover { color: var(--terracotta); }
+  .footer-bottom { border-top: 1px solid rgba(243,239,230,0.14); padding-top: 26px; font-size: 0.78rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .footer-bottom a { color: var(--terracotta); }
+  .footer-bottom a:hover { color: var(--parchment); }
 
   /* --- Reveal + toast --- */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -286,9 +399,9 @@
 
   .toast {
     position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    background: var(--evergreen); color: var(--cream);
-    padding: 16px 22px; border-radius: 12px; font-size: 0.88rem;
-    box-shadow: 0 20px 40px -12px rgba(20, 40, 30, 0.5);
+    background: var(--evergreen); color: var(--parchment);
+    padding: 16px 22px; border-radius: 3px; font-size: 0.88rem;
+    box-shadow: 0 20px 40px -12px rgba(24, 42, 32, 0.5);
     transform: translateY(20px); opacity: 0; pointer-events: none;
     transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
   }
@@ -297,24 +410,22 @@
 </head>
 <body>
 
+<div class="topbar">First assessments available this week · Maadi · Zamalek · New Cairo</div>
+
 <nav class="nav">
   <div class="container nav-inner">
-    <a href="#" class="logo">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 2C11 2 13.5 6.5 13.5 10C13.5 13.5 11 15.5 11 15.5C11 15.5 8.5 13.5 8.5 10C8.5 6.5 11 2 11 2Z" stroke="#1f3a2d" stroke-width="1.4"/><path d="M11 15.5V20" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round"/></svg>
-      Solace
-    </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li><a href="#locations">Locations</a></li>
-      <li><a href="#stories">Stories</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="#book" class="btn btn-solid">Book a Session</a>
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 1H18M0 6H18M0 11H18" stroke="#1f3a2d" stroke-width="1.4"/></svg>
-      </button>
-    </div>
+    <a href="#" class="logo">Solace<span class="mark">.</span></a>
+    <ul class="nav-links right">
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#book">Book</a></li>
+    </ul>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 1H18M0 6H18M0 11H18" stroke="#22382b" stroke-width="1.4"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -324,220 +435,190 @@
   <a href="#approach">Approach</a>
   <a href="#locations">Locations</a>
   <a href="#stories">Stories</a>
-  <a href="#book" class="btn btn-solid">Book a Session</a>
+  <a href="#book" class="btn btn-terra">Book a Session</a>
 </div>
 
 <header class="hero">
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">Multi-Location Wellness Clinic</span>
-      <h1>Feel like <em>yourself</em> again.</h1>
-      <p class="lead">Solace brings physiotherapy, nutrition, and mental wellness under one roof — with practitioners who take the time to understand you, not just your symptoms.</p>
-      <div class="hero-actions">
-        <a href="#book" class="btn btn-solid">Book a Session</a>
-        <a href="#services" class="btn btn-line">Explore Services</a>
-      </div>
-      <div class="hero-stats">
-        <div><div class="num">3</div><div class="label">Clinic locations</div></div>
-        <div><div class="num">14</div><div class="label">Practitioners</div></div>
-        <div><div class="num">6k+</div><div class="label">Sessions per year</div></div>
-      </div>
+  <div class="container">
+    <span class="kicker">Multi-Location Wellness Clinic</span>
+    <h1>Care for the <em>whole</em> of you.</h1>
+    <p class="lead">Physiotherapy, nutrition, and mental wellness under one roof — with practitioners who listen before they prescribe.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn btn-terra">Book a Session</a>
+      <a href="#services" class="btn btn-line">Explore Services</a>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="panel panel-a"></div>
-      <div class="panel panel-b"></div>
-      <div class="panel panel-c">
-        <p class="quote">"The first clinic that ever listened before it prescribed."</p>
-        <p class="who">— Layla A., member since 2024</p>
-      </div>
+    <div class="hero-arches" aria-hidden="true">
+      <div class="arch arch-1"></div>
+      <div class="arch arch-2"><span class="arch-label">Est. Cairo, 2021 — 6,000+ sessions a year</span></div>
+      <div class="arch arch-3"></div>
     </div>
   </div>
 </header>
 
-<div class="strip">
-  <div class="container strip-inner">
-    <span class="strip-label">Care programs for</span>
-    <div class="strip-items">
-      <span>Recovery</span><span>Mobility</span><span>Nutrition</span><span>Sleep</span><span>Stress</span>
-    </div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Physiotherapy</span><span>Nutrition</span><span>Mental Wellness</span><span>Recovery &amp; Performance</span><span>Sleep</span><span>Mobility</span>
+    <span>Physiotherapy</span><span>Nutrition</span><span>Mental Wellness</span><span>Recovery &amp; Performance</span><span>Sleep</span><span>Mobility</span>
   </div>
 </div>
 
 <section id="services">
   <div class="container">
-    <div class="services-head reveal">
-      <div>
-        <span class="eyebrow">What We Offer</span>
-        <h2>One clinic. Every part of feeling well.</h2>
-      </div>
-      <a href="#book" class="btn btn-line">Book a Session</a>
+    <div class="services-intro reveal">
+      <span class="kicker">What We Offer</span>
+      <h2>One clinic. Every part of feeling <em>well</em>.</h2>
     </div>
-    <div class="services-grid">
-      <div class="service reveal">
-        <div class="glyph"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 16C4 16 6 10 10 10C14 10 16 4 16 4" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round"/><circle cx="16" cy="4" r="2" stroke="#1f3a2d" stroke-width="1.4"/></svg></div>
-        <h3>Physiotherapy</h3>
-        <p>Hands-on treatment and guided rehab plans for injury, posture, and chronic pain.</p>
-      </div>
-      <div class="service reveal">
-        <div class="glyph"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3C10 3 12 6.5 12 9C12 11.5 10 13 10 13C10 13 8 11.5 8 9C8 6.5 10 3 10 3Z" stroke="#1f3a2d" stroke-width="1.4"/><path d="M10 13V17" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Nutrition</h3>
-        <p>Realistic, food-first plans built around your habits — no crash protocols.</p>
-      </div>
-      <div class="service reveal">
-        <div class="glyph"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="#1f3a2d" stroke-width="1.4"/><path d="M7 10.5C7 10.5 8.5 12.5 10 12.5C11.5 12.5 13 10.5 13 10.5" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Mental Wellness</h3>
-        <p>Licensed therapists for stress, burnout, and sleep — in person or online.</p>
-      </div>
-      <div class="service reveal">
-        <div class="glyph"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 13L7 9L10 12L17 5" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5H17V9" stroke="#1f3a2d" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Recovery & Performance</h3>
-        <p>Athlete-grade recovery care — mobility screening, load planning, return-to-sport.</p>
-      </div>
+    <div class="service-row reveal">
+      <span class="service-num">01</span>
+      <h3>Physiotherapy</h3>
+      <p>Hands-on treatment and guided rehab plans for injury, posture, and chronic pain.</p>
+      <a href="#book" class="service-go" aria-label="Book physiotherapy"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.4"/></svg></a>
+    </div>
+    <div class="service-row reveal">
+      <span class="service-num">02</span>
+      <h3>Nutrition</h3>
+      <p>Realistic, food-first plans built around your habits — no crash protocols.</p>
+      <a href="#book" class="service-go" aria-label="Book nutrition"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.4"/></svg></a>
+    </div>
+    <div class="service-row reveal">
+      <span class="service-num">03</span>
+      <h3>Mental Wellness</h3>
+      <p>Licensed therapists for stress, burnout, and sleep — in person or online.</p>
+      <a href="#book" class="service-go" aria-label="Book mental wellness"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.4"/></svg></a>
+    </div>
+    <div class="service-row reveal">
+      <span class="service-num">04</span>
+      <h3>Recovery &amp; Performance</h3>
+      <p>Athlete-grade recovery care — mobility screening, load planning, return-to-sport.</p>
+      <a href="#book" class="service-go" aria-label="Book recovery and performance"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.4"/></svg></a>
     </div>
   </div>
 </section>
 
 <section id="approach" class="approach">
   <div class="container">
-    <span class="eyebrow">The Solace Approach</span>
-    <h2>Care that starts with listening, not a checklist.</h2>
-    <div class="approach-grid">
-      <div class="approach-item reveal">
-        <span class="step">01 — Understand</span>
+    <span class="kicker">The Solace Approach</span>
+    <p class="approach-quote reveal">We don't treat symptoms in isolation. Every plan starts with a <em>real conversation</em> — and every practitioner works from the same page.</p>
+    <div class="approach-steps reveal">
+      <div class="approach-step">
+        <span class="n">Step one — Understand</span>
         <h3>A real first conversation</h3>
-        <p>Every membership starts with a 45-minute assessment across movement, nutrition, and stress — so nothing gets treated in isolation.</p>
+        <p>A 45-minute assessment across movement, nutrition, and stress — so nothing gets treated in isolation.</p>
       </div>
-      <div class="approach-item reveal">
-        <span class="step">02 — Plan</span>
+      <div class="approach-step">
+        <span class="n">Step two — Plan</span>
         <h3>One plan, whole picture</h3>
         <p>Your practitioners share one care plan and one file. Your physio knows what your nutritionist changed last week.</p>
       </div>
-      <div class="approach-item reveal">
-        <span class="step">03 — Progress</span>
+      <div class="approach-step">
+        <span class="n">Step three — Progress</span>
         <h3>Measured, visible progress</h3>
-        <p>Check-ins every four weeks with clear markers — pain scores, mobility ranges, sleep quality — so you can see it working.</p>
+        <p>Check-ins every four weeks with clear markers — pain scores, mobility ranges, sleep quality.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="locations">
+<section id="locations" class="locations">
   <div class="container">
-    <span class="eyebrow">Where to Find Us</span>
-    <h2 style="max-width:520px;">Three clinics. Same standard of care.</h2>
+    <div class="locations-head reveal">
+      <span class="kicker centered">Where to Find Us</span>
+      <h2>Three clinics. Same standard of <em>care</em>.</h2>
+    </div>
     <div class="locations-grid">
       <div class="location reveal">
         <div class="map"></div>
-        <div class="location-body">
-          <h3>Solace Maadi</h3>
-          <span class="hours">Sat–Thu, 9:00–21:00</span>
-          <p>12 Road 233, Degla, Maadi — full clinic with recovery suite and studio.</p>
-        </div>
+        <h3>Solace Maadi</h3>
+        <span class="hours">Sat–Thu · 9:00–21:00</span>
+        <p>12 Road 233, Degla — full clinic with recovery suite and studio.</p>
       </div>
       <div class="location reveal">
         <div class="map"></div>
-        <div class="location-body">
-          <h3>Solace Zamalek</h3>
-          <span class="hours">Sat–Thu, 10:00–20:00</span>
-          <p>4 Brazil Street, Zamalek — boutique clinic focused on physio and therapy.</p>
-        </div>
+        <h3>Solace Zamalek</h3>
+        <span class="hours">Sat–Thu · 10:00–20:00</span>
+        <p>4 Brazil Street — boutique clinic focused on physio and therapy.</p>
       </div>
       <div class="location reveal">
         <div class="map"></div>
-        <div class="location-body">
-          <h3>Solace New Cairo</h3>
-          <span class="hours">Daily, 9:00–22:00</span>
-          <p>Park Street Mall, 5th Settlement — our largest clinic, with sports lab.</p>
-        </div>
+        <h3>Solace New Cairo</h3>
+        <span class="hours">Daily · 9:00–22:00</span>
+        <p>Park Street Mall, 5th Settlement — our largest clinic, with sports lab.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="stories" class="quotes">
+<section id="stories" class="stories">
   <div class="container">
-    <span class="eyebrow">Member Stories</span>
-    <h2 style="max-width:520px;">What getting better actually sounds like.</h2>
-    <div class="quotes-grid">
-      <figure class="quote-card reveal">
-        <blockquote>"Two years of back pain, four clinics, no answers. Solace found the cause in one assessment and I've been pain-free for six months."</blockquote>
-        <figcaption>Omar S. — Recovery program, Maadi</figcaption>
-      </figure>
-      <figure class="quote-card reveal">
-        <blockquote>"It's the only place where my nutritionist and my physio actually talk to each other. It feels like one team working on one me."</blockquote>
-        <figcaption>Nadine K. — Full membership, New Cairo</figcaption>
-      </figure>
-    </div>
+    <span class="kicker centered">Member Stories</span>
+    <figure class="story reveal">
+      <span class="mark" aria-hidden="true">"</span>
+      <blockquote>Two years of back pain, four clinics, no answers. Solace found the cause in one assessment — I've been pain-free for six months.</blockquote>
+      <figcaption>Omar S. — Recovery Program, Maadi</figcaption>
+    </figure>
+    <figure class="story reveal">
+      <span class="mark" aria-hidden="true">"</span>
+      <blockquote>It's the only place where my nutritionist and my physio actually talk to each other. One team, working on one me.</blockquote>
+      <figcaption>Nadine K. — Full Membership, New Cairo</figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="book">
-  <div class="container booking-grid">
-    <div class="booking-info reveal">
-      <span class="eyebrow">Book a Session</span>
-      <h2>Start with a first assessment.</h2>
-      <p class="lead">Tell us what's going on and pick a clinic. We'll confirm your session within a few hours.</p>
-      <div class="booking-note"><span class="n">45 min</span> Full-body first assessment with a senior practitioner</div>
-      <div class="booking-note"><span class="n">Same week</span> First appointments almost always available</div>
-      <div class="booking-note"><span class="n">No commitment</span> Memberships are optional, never required</div>
+<section id="book" class="booking">
+  <div class="container">
+    <div class="booking-panel reveal">
+      <div>
+        <span class="kicker">Book a Session</span>
+        <h2>Start with a first assessment.</h2>
+        <p class="lead">Tell us what's going on and pick a clinic. We'll confirm your session within a few hours.</p>
+        <div class="booking-fact"><span class="n">45 min</span> Full-body first assessment with a senior practitioner</div>
+        <div class="booking-fact"><span class="n">Same week</span> First appointments almost always available</div>
+        <div class="booking-fact"><span class="n">No commitment</span> Memberships are optional, never required</div>
+      </div>
+      <form class="booking-form">
+        <div class="bf-row">
+          <div class="bf-field"><label for="bf-name">Full name</label><input id="bf-name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="bf-field"><label for="bf-phone">Phone</label><input id="bf-phone" name="phone" type="tel" placeholder="01X XXX XXXX" autocomplete="tel" required></div>
+        </div>
+        <div class="bf-row">
+          <div class="bf-field">
+            <label for="bf-clinic">Preferred clinic</label>
+            <select id="bf-clinic" name="clinic">
+              <option>Maadi</option>
+              <option>Zamalek</option>
+              <option>New Cairo</option>
+            </select>
+          </div>
+          <div class="bf-field">
+            <label for="bf-service">What do you need?</label>
+            <select id="bf-service" name="service">
+              <option>Physiotherapy</option>
+              <option>Nutrition</option>
+              <option>Mental wellness</option>
+              <option>Recovery &amp; performance</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf-field">
+          <label for="bf-notes">Anything we should know?</label>
+          <textarea id="bf-notes" name="notes" placeholder="Injuries, goals, questions..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-fill" style="width:100%;">Request My Session</button>
+      </form>
     </div>
-    <form class="booking-form reveal">
-      <div class="bf-row">
-        <div class="bf-field"><label for="bf-name">Full name</label><input id="bf-name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
-        <div class="bf-field"><label for="bf-phone">Phone</label><input id="bf-phone" name="phone" type="tel" placeholder="01X XXX XXXX" autocomplete="tel" required></div>
-      </div>
-      <div class="bf-row">
-        <div class="bf-field">
-          <label for="bf-clinic">Preferred clinic</label>
-          <select id="bf-clinic" name="clinic">
-            <option>Maadi</option>
-            <option>Zamalek</option>
-            <option>New Cairo</option>
-          </select>
-        </div>
-        <div class="bf-field">
-          <label for="bf-service">What do you need help with?</label>
-          <select id="bf-service" name="service">
-            <option>Physiotherapy</option>
-            <option>Nutrition</option>
-            <option>Mental wellness</option>
-            <option>Recovery & performance</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-      </div>
-      <div class="bf-field">
-        <label for="bf-notes">Anything we should know? (optional)</label>
-        <textarea id="bf-notes" name="notes" placeholder="Injuries, goals, questions..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-solid" style="width:100%;">Request My Session</button>
-    </form>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-top">
-      <div>
-        <span class="logo" style="font-size:1.3rem;">Solace</span>
-        <p>A multi-location wellness clinic bringing physiotherapy, nutrition, and mental wellness together under one care plan.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Clinic</h4>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#approach">Approach</a></li>
-          <li><a href="#locations">Locations</a></li>
-          <li><a href="#book">Book a Session</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="#book">hello@solaceclinics.example</a></li>
-          <li><a href="#locations">Find a clinic</a></li>
-        </ul>
-      </div>
+    <div class="wordmark">Solace<span class="mark">.</span></div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#locations">Locations</a>
+      <a href="#stories">Stories</a>
+      <a href="#book">Book</a>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Solace Clinics. A concept site — all details are fictional.</span>
