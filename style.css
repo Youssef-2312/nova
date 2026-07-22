@@ -342,11 +342,15 @@ footer {
 }
 
 .footer-grid {
+  display: grid;
+  grid-template-columns: 5fr 3fr 4fr;
+  gap: 32px;
   padding-bottom: 40px;
-  margin-bottom: 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer-grid > [class*="col-"] { margin-bottom: 32px; }
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+}
 .footer-grid h4 { color: var(--white); font-size: var(--fs-small); letter-spacing: var(--ls-wide); text-transform: uppercase; margin-bottom: 20px; }
 .footer-grid p { color: rgba(255,255,255,0.55); }
 .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
@@ -378,6 +382,67 @@ footer {
   background: var(--off-white);
   border: 1px solid var(--border);
   color: var(--text-muted);
+}
+
+/* ============================================
+   Toast (form feedback)
+   ============================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  background: var(--black);
+  color: var(--white);
+  padding: 16px 22px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ============================================
+   Back to top
+   ============================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -12px rgba(11, 29, 58, 0.35);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), border-color 0.25s var(--ease);
+}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { border-color: var(--navy-500); background: var(--navy-100); }
+
+/* ============================================
+   Form validation states
+   ============================================ */
+.field input:user-invalid,
+.field textarea:user-invalid {
+  border-color: #b3261e;
+}
+.field input:user-invalid:focus,
+.field textarea:user-invalid:focus {
+  border-color: #b3261e;
+  box-shadow: 0 0 0 4px rgba(179, 38, 30, 0.12);
 }
 
 /* ============================================

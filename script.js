@@ -3,11 +3,19 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* --- Navbar scroll state --- */
+  /* --- Navbar scroll state + back-to-top --- */
   const navbar = document.querySelector('.navbar');
+
+  const backToTop = document.createElement('button');
+  backToTop.className = 'back-to-top';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12V2M7 2L2 7M7 2L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(backToTop);
+
   const onScroll = () => {
-    if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 12);
+    navbar?.classList.toggle('scrolled', window.scrollY > 12);
+    backToTop.classList.toggle('visible', window.scrollY > window.innerHeight);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -17,9 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.querySelector('.mobile-menu');
   const close = document.querySelector('.mobile-close');
   if (toggle && menu) {
-    toggle.addEventListener('click', () => menu.classList.add('open'));
-    close?.addEventListener('click', () => menu.classList.remove('open'));
+    const setMenu = (open) => {
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) close?.focus();
+      else toggle.focus();
+    };
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.addEventListener('click', () => setMenu(true));
+    close?.addEventListener('click', () => setMenu(false));
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false);
+    });
   }
 
   /* --- Reveal on scroll --- */
