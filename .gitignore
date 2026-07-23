@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output - Speed Insights bundle is committed to repo
+# since it's needed for the static site to function
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
