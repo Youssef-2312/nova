@@ -26,8 +26,19 @@
 // ============================================
 
 window.NOVA_PROJECTS = [
-  {
-    id: 'elane',
+  { id: 'Bentaboha',
+    title: 'Bent Aboha',
+    industry: 'Fashion Retail',
+    industryLabel: 'Fashion Retail',
+    tech: ['Shopify', 'Custom Theme'],
+    url: 'https://elanethestudio.com',
+    external: true,
+    img: 'img/elane.jpg',
+    color: 'linear-gradient(150deg,#5c614c,#a5a58d)',
+    blurb: 'A minimalist Shopify boutique for a contemporary fashion brand, built around editorial photography.',
+    desc: 'A minimalist Shopify boutique for a contemporary Egyptian fashion brand — editorial photography, a clean collection layout, and a streamlined cart built around elevated everyday pieces.'
+
+},  { id: 'elane',
     title: 'Elane The Studio',
     industry: 'retail',
     industryLabel: 'Fashion Retail',
