@@ -26,8 +26,19 @@
 // ============================================
 
 window.NOVA_PROJECTS = [
-  {
-    id: 'elane',
+  { id: 'bent-aboha',
+    title: 'Bent Aboha',
+    industry: 'retail',
+    industryLabel: 'Fashion Retail',
+    tech: ['Shopify', 'Custom Theme'],
+    url: 'https://cv0mwv-x1.myshopify.com',
+    external: true,
+    img: 'img/bentaboha.jpg',
+    color: 'linear-gradient(150deg,#3b2f2f,#a8846b)',
+    blurb: 'A heritage-inspired Shopify streetwear brand — totes, tees, caps and hats built around identity and pride.',
+    desc: 'A Shopify store for Bent Aboha, a heritage-driven streetwear label — "Rooted in heritage, worn with pride." Four collections (tote bags, tees, caps and hats) presented through an editorial, story-led homepage with a clean checkout flow.'
+
+},  { id: 'elane',
     title: 'Elane The Studio',
     industry: 'retail',
     industryLabel: 'Fashion Retail',
