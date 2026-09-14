@@ -26,7 +26,6 @@
 // ============================================
 
 window.NOVA_PROJECTS = [
-<<<<<<< HEAD
   { id: 'bent-aboha',
     title: 'Bent Aboha',
     industry: 'retail',
