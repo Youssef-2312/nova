@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
      [data-project-filters]  → filter buttons built from the data
      [data-projects-preview] → newest 3 (homepage Selected Work)
      [data-projects-collage] → newest 3 (about page collage)
+     [data-hero-stack]       → newest 3 (homepage hero mockup images,
+                                largest/front card = newest project)
      Runs before the reveal/filter/modal bindings below so the
      generated elements get picked up by them. */
   const projects = window.NOVA_PROJECTS || [];
@@ -95,6 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
     collage.innerHTML = projects.slice(0, 3).map((p, i) => `
       <div class="shot shot-${i + 1}"><img src="${p.img}" alt="${p.title} — built by Nova" loading="lazy" width="1280" height="960"></div>`).join('') +
       '<span class="caption">Recent work</span>';
+  }
+
+  const heroStack = document.querySelector('[data-hero-stack]');
+  if (heroStack && projects.length) {
+    const heroImgs = heroStack.querySelectorAll('.mockup-card .body img');
+    projects.slice(0, 3).forEach((p, i) => {
+      const img = heroImgs[i];
+      if (img) {
+        img.src = p.img;
+        img.alt = `${p.title} website screenshot`;
+      }
+    });
   }
 
   /* --- Reveal on scroll --- */

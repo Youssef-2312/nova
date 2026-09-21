@@ -4,9 +4,10 @@
 // ADD NEW PROJECTS TO THE TOP OF THIS LIST.
 //
 // The newest 3 automatically appear in the
-// homepage "Selected Work" preview and in the
-// About page collage (newest on the left; the
-// oldest of the three drops out of those views).
+// homepage "Selected Work" preview, the homepage
+// hero mockup stack, and the About page collage
+// (newest first/largest; the oldest of the three
+// drops out of those views once a 4th is added).
 // The Portfolio page always shows every project,
 // and its industry filters build themselves from
 // whatever industries exist below.
