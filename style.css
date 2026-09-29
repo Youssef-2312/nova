@@ -338,8 +338,10 @@ footer {
   flex-wrap: wrap;
 }
 .footer-cta h3 { color: var(--white); margin-bottom: 6px; }
-.footer-cta p { margin: 0; max-width: 420px; }
+.footer-cta p { margin: 0; max-width: 420px; color: rgba(255,255,255,0.7); }
 .footer-cta .btn { flex-shrink: 0; }
+.footer-cta .btn-primary { background: var(--white); color: var(--black); }
+.footer-cta .btn-primary:hover { background: var(--navy-100); }
 
 .footer-grid {
   display: grid;
@@ -375,6 +377,10 @@ footer {
    Utility animation classes
    ============================================ */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal.reveal-pending {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);

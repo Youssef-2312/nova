@@ -51,13 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
      Runs before the reveal/filter/modal bindings below so the
      generated elements get picked up by them. */
   const projects = window.NOVA_PROJECTS || [];
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
   const arrowSvg = '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.4"/></svg>';
   const linkAttrs = (p) => p.external ? ' target="_blank" rel="noopener"' : '';
 
   const grid = document.querySelector('[data-projects-grid]');
   if (grid && projects.length) {
     grid.innerHTML = projects.map(p => `
-      <div class="project-card reveal" data-industry="${p.industry}" data-title="${p.title}" data-industry-label="${p.industryLabel}" data-tech="${p.tech.join(', ')}" data-url="${p.url}" data-img="${p.img}" data-color="${p.color}" data-desc="${p.desc}">
+      <div class="project-card reveal" data-industry="${escapeHtml(p.industry)}" data-title="${escapeHtml(p.title)}" data-industry-label="${escapeHtml(p.industryLabel)}" data-tech="${escapeHtml(p.tech.join(', '))}" data-url="${escapeHtml(p.url)}" data-img="${escapeHtml(p.img)}" data-color="${escapeHtml(p.color)}" data-desc="${escapeHtml(p.desc)}">
         <div class="project-thumb" style="background:${p.color};"><img src="${p.img}" alt="${p.title} website screenshot" loading="lazy" width="1280" height="960"></div>
         <div class="project-body">
           <div class="project-top">
@@ -122,7 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
+    revealEls.forEach(el => {
+      io.observe(el);
+      el.classList.add('reveal-pending');
+    });
   } else {
     revealEls.forEach(el => el.classList.add('in-view'));
   }
@@ -265,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --- Hero mockup parallax (subtle, mouse-driven) --- */
-  const heroStack = document.querySelector('.hero-stack');
-  if (heroStack && window.matchMedia('(pointer:fine)').matches) {
+  if (heroStack && window.matchMedia('(pointer:fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     heroStack.addEventListener('mousemove', (e) => {
       const rect = heroStack.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
